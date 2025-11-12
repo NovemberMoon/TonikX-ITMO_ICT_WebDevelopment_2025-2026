@@ -1,0 +1,594 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://NovemberMoon.github.io/TonikX-ITMO_ICT_WebDevelopment_2025-2026/lab_2_report/">
+      
+      
+        <link rel="prev" href="../lab_1_report/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Лабораторная работа №2 - Лабораторные работы</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#no2" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Лабораторные работы" class="md-header__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Лабораторные работы
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Лабораторная работа №2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Лабораторные работы" class="md-nav__button md-logo" aria-label="Лабораторные работы" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Лабораторные работы
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_1_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторная работа №1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Лабораторная работа №2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="no2">Отчёт по лабораторной работе №2</h1>
+<h1 id="django">Реализация простого сайта средствами Django</h1>
+<blockquote>
+<p><strong>Выполнил:</strong> Христофоров Владислав Николаевич, K3340, WEB 2.3</p>
+</blockquote>
+<hr />
+<h2 id="_1">Задание</h2>
+<p>Вариант 4: Разработка сайта "Список туров туристической фирмы"</p>
+<h2 id="_2">Описание задания</h2>
+<p>Разработать веб-приложение для туристической фирмы со следующим функционалом:</p>
+<ul>
+<li>Регистрация новых пользователей</li>
+<li>Просмотр и бронирование туров с возможностью редактирования и удаления бронирований</li>
+<li>Система отзывов о турах с рейтингом 1-10</li>
+<li>Панель администратора для подтверждения бронирований</li>
+<li>Статистика проданных туров по странам</li>
+</ul>
+<h2 id="_3">Кратко о выполнении</h2>
+<p>Было разработано Django-приложение с использованием PostgreSQL, реализующее частичный цикл работы туристического агентства. Приложение включает систему аутентификации, бронирования туров, управления пользователями и административную панель.</p>
+<hr />
+<h2 id="_4">Основные фрагменты кода</h2>
+<h3 id="1-tour_appmodelspy">1. Модели данных (tour_app/models.py)</h3>
+<pre><code class="language-python">class Tour(models.Model):
+    title = models.CharField(max_length=200, verbose_name=&quot;Название тура&quot;)
+    agency = models.CharField(max_length=200, verbose_name=&quot;Турагенство&quot;)
+    description = models.TextField(verbose_name=&quot;Описание тура&quot;)
+    country = models.CharField(max_length=100, verbose_name=&quot;Страна&quot;)
+    start_date = models.DateField(verbose_name=&quot;Дата начала&quot;)
+    end_date = models.DateField(verbose_name=&quot;Дата окончания&quot;)
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=&quot;Цена&quot;)
+    payment_conditions = models.TextField(verbose_name=&quot;Условия оплаты&quot;)
+    available_spots = models.IntegerField(verbose_name=&quot;Доступные места&quot;)
+
+    @property
+    def confirmed_bookings_count(self):
+        return self.booking_set.filter(status='confirmed').count()
+
+    def get_available_spots(self):
+        total_booked = self.booking_set.filter(status__in=['pending', 'confirmed']).aggregate(
+            total=models.Sum('persons')
+        )['total'] or 0
+        return self.available_spots - total_booked
+</code></pre>
+<p><strong>Объяснение:</strong> Модель <code>Tour</code> представляет тур со всей необходимой информацией. Используется <code>@property</code> для вычисляемого поля <code>confirmed_bookings_count</code>, которое не сохраняется в БД, но доступно как атрибут. Метод <code>get_available_spots()</code> вычисляет реальное количество свободных мест с учетом подтвержденных бронирований.</p>
+<hr />
+<h3 id="2-tour_appmodelspy">2. Система бронирования (tour_app/models.py)</h3>
+<pre><code class="language-python">class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Ожидает подтверждения'),
+        ('confirmed', 'Подтверждено'),
+        ('cancelled', 'Отменено'),
+    ]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=&quot;Пользователь&quot;)
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, verbose_name=&quot;Тур&quot;)
+    booking_date = models.DateTimeField(auto_now_add=True, verbose_name=&quot;Дата бронирования&quot;)
+    persons = models.IntegerField(default=1, verbose_name=&quot;Количество человек&quot;)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', verbose_name=&quot;Статус&quot;)
+
+    def clean(self):
+        if self.persons &lt;= 0:
+            raise ValidationError('Количество человек должно быть положительным числом')
+        if hasattr(self, 'tour') and self.tour:
+            if not self.tour.can_book(self.persons):
+                raise ValidationError(f'Недостаточно свободных мест. Доступно: {self.tour.get_available_spots()}')
+</code></pre>
+<p><strong>Объяснение:</strong> Модель <code>Booking</code> управляет бронированиями с системой статусов. Метод <code>clean()</code> обеспечивает валидацию данных перед сохранением, проверяя корректность количества человек и доступность мест. Это встроенный механизм Django для проверки данных.</p>
+<hr />
+<h3 id="3-tour_appviewspy">3. Представление списка туров (tour_app/views.py)</h3>
+<pre><code class="language-python">class TourListView(ListView):
+    model = Tour
+    template_name = 'tour_app/tour_list.html'
+    context_object_name = 'tours'
+    paginate_by = 6
+
+    def get_queryset(self):
+        queryset = Tour.objects.filter(end_date__gte=timezone.now().date()).order_by('start_date')
+        self.filterset = TourFilter(self.request.GET, queryset=queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = self.filterset
+        # ... дополнительная логика для активных фильтров
+        return context
+</code></pre>
+<p><strong>Объяснение:</strong> Класс-представление <code>TourListView</code> наследуется от <code>ListView</code> и предоставляет список туров. Метод <code>get_queryset()</code> фильтрует только активные туры (с датой окончания в будущем) и применяет систему фильтрации. <code>get_context_data()</code> добавляет фильтры в контекст шаблона.</p>
+<hr />
+<h3 id="4-tour_appfilterspy">4. Система фильтрации (tour_app/filters.py)</h3>
+<pre><code class="language-python">class TourFilter(django_filters.FilterSet):
+    search = django_filters.CharFilter(
+        method='filter_search',
+        label='Поиск'
+    )
+    country = django_filters.CharFilter(
+        field_name='country',
+        lookup_expr='icontains',
+        label='Страна'
+    )
+
+    def filter_search(self, queryset, name, value):
+        return queryset.filter(
+            models.Q(title__icontains=value) |
+            models.Q(description__icontains=value) |
+            models.Q(country__icontains=value) |
+            models.Q(agency__icontains=value)
+        )
+</code></pre>
+<p><strong>Объяснение:</strong> Используется библиотека <code>django-filters</code> для создания системы фильтрации. Кастомный метод <code>filter_search()</code> позволяет искать по нескольким полям одновременно с помощью объектов <code>Q</code> Django, которые обеспечивают сложные запросы с оператором OR.</p>
+<hr />
+<h3 id="5-tour_appviewspy">5. Панель управления администратора (tour_app/views.py)</h3>
+<pre><code class="language-python">@login_required
+@staff_required
+def management_dashboard(request):
+    period = request.GET.get('period', '30days')
+
+    if period == '30days':
+        date_filter = timezone.now() - timezone.timedelta(days=30)
+    # ... логика выбора периода
+
+    if date_filter:
+        bookings = Booking.objects.filter(booking_date__gte=date_filter)
+        tours = Tour.objects.filter(start_date__gte=date_filter)
+        reviews = Review.objects.filter(review_date__gte=date_filter)
+
+    booking_stats = bookings.aggregate(
+        pending=Count('id', filter=Q(status='pending')),
+        confirmed=Count('id', filter=Q(status='confirmed')),
+        cancelled=Count('id', filter=Q(status='cancelled'))
+    )
+</code></pre>
+<p><strong>Объяснение:</strong> Представление для панели управления использует декораторы <code>@login_required</code> и <code>@staff_required</code> для ограничения доступа. Метод <code>aggregate()</code> с условиями <code>filter=Q()</code> позволяет получать агрегированные данные по разным статусам бронирований в одном запросе.</p>
+<hr />
+<h3 id="6-tour_appviewspy">6. Статистика по странам (tour_app/views.py)</h3>
+<pre><code class="language-python">@login_required
+def statistics(request):
+    one_year_ago = timezone.now() - timezone.timedelta(days=365)
+
+    tours_by_country = Booking.objects.filter(
+        status='confirmed',
+        booking_date__gte=one_year_ago
+    ).values('tour__country').annotate(
+        total_sold=Count('id')
+    ).order_by('-total_sold')
+</code></pre>
+<p><strong>Объяснение:</strong> Этот код реализует требование задания по отображению статистики проданных туров по странам. Используется <code>values()</code> для группировки по странам и <code>annotate()</code> с <code>Count()</code> для подсчета количества бронирований в каждой группе.</p>
+<hr />
+<h3 id="7-user_appmodelspy">7. Кастомная модель пользователя (user_app/models.py)</h3>
+<pre><code class="language-python">class CustomUser(AbstractUser):
+    phone = models.CharField(max_length=20, blank=True, verbose_name=&quot;Телефон&quot;)
+    address = models.TextField(blank=True, verbose_name=&quot;Адрес&quot;)
+    date_of_birth = models.DateField(null=True, blank=True, verbose_name=&quot;Дата рождения&quot;)
+
+    def __str__(self):
+        return f&quot;{self.first_name} {self.last_name} ({self.username})&quot;
+</code></pre>
+<p><strong>Объяснение:</strong> Модель наследуется от <code>AbstractUser</code>, что позволяет расширить стандартную модель пользователя Django без изменения базовой логики аутентификации. Это рекомендуемый подход в Django для добавления дополнительных полей к пользователю.</p>
+<hr />
+<h3 id="8-tour_appdecoratorspy">8. Система разрешений (tour_app/decorators.py)</h3>
+<pre><code class="language-python">def staff_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        if request.user.is_authenticated and request.user.is_staff:
+            return view_func(request, *args, **kwargs)
+        else:
+            messages.error(request, 'Требуются права администратора.')
+            return redirect('tour_list')
+    return _wrapped_view
+</code></pre>
+<p><strong>Объяснение:</strong> Кастомный декоратор для проверки прав администратора. Использует <code>functools.wraps</code> для сохранения метаданных функции и интегрируется с системой сообщений Django для информирования пользователя.</p>
+<hr />
+<h2 id="_5">Примеры работы приложения</h2>
+<h3 id="1-">1. Главная страница - список туров</h3>
+<p><img alt="Список туров" src="../img-lab_2/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D1%82%D1%83%D1%80%D0%BE%D0%B2.jpg" /></p>
+<p><strong>Описание:</strong> На главной странице отображается сетка карточек туров с основной информацией. Реализованы:</p>
+<ul>
+<li>Фильтрация по стране и цене</li>
+<li>Поиск по названию и описанию</li>
+<li>Пагинация (по 6 туров на странице)</li>
+<li>Отображение доступных мест и цен</li>
+</ul>
+<h3 id="2-c">2. Страница c деталями тура</h3>
+<p><img alt="Детали о туре" src="../img-lab_2/%D0%92%D0%BE%D0%BB%D1%88%D0%B5%D0%B1%D0%BD%D0%B0%D1%8F_%D0%9B%D0%B0%D0%BF%D0%BB%D0%B0%D0%BD%D0%B4%D0%B8%D1%8F_-_%D0%B2%D1%81%D1%82%D1%80%D0%B5%D1%87%D0%B0_%D1%81_%D0%A1%D0%B0%D0%BD%D1%82%D0%BE%D0%B9.jpg" /></p>
+<p><strong>Описание:</strong> Страница содержит полную информацию о туре, включая:</p>
+<ul>
+<li>Даты проведения и условия оплаты</li>
+<li>Форму бронирования с валидацией количества мест</li>
+<li>Систему отзывов с рейтингом 1-10</li>
+<li>Проверку авторизации для функционала бронирования</li>
+</ul>
+<h3 id="3">3. Бронирования пользователя</h3>
+<p><img alt="Бронирования пользователя" src="../img-lab_2/%D0%9C%D0%BE%D0%B8_%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.jpg" /></p>
+<p><strong>Описание:</strong> В личном кабинете пользователи видят:</p>
+<ul>
+<li>Активные бронирования с статусами</li>
+<li>Архив завершенных туров</li>
+<li>Статистику по бронированиям</li>
+<li>Возможность редактирования и отмены бронирований</li>
+</ul>
+<h3 id="4">4. Панель управления администратора</h3>
+<p><img alt="Панель управления" src="../img-lab_2/%D0%9F%D0%B0%D0%BD%D0%B5%D0%BB%D1%8C_%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F.jpg" /></p>
+<p><strong>Описание:</strong> Администраторы имеют доступ к:</p>
+<ul>
+<li>Общей статистике и метрикам</li>
+<li>Управлению всеми бронированиями</li>
+<li>Подтверждению/отклонению заявок</li>
+<li>Просмотру туров с малым количеством мест</li>
+</ul>
+<h3 id="5">5. Статистика проданных туров</h3>
+<p><img alt="Статистика туров" src="../img-lab_2/%D0%A1%D1%82%D0%B0%D1%82%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0_%D1%82%D1%83%D1%80%D0%BE%D0%B2.jpg" /></p>
+<p><strong>Описание:</strong> Реализована таблица, отображающая:</p>
+<ul>
+<li>Количество проданных туров по странам за последний год</li>
+<li>Рейтинг популярных туров</li>
+<li>Список предстоящих туров</li>
+<li>Лучшие туры по отзывам</li>
+</ul>
+<hr />
+<h2 id="_6">Заключение</h2>
+<p>В результате выполнения лабораторной работы успешно разработано функциональное веб-приложение для туристической фирмы, соответствующее всем требованиям задания. Приложение включает систему бронирования, управления пользователями, административную панель и статистические отчёты. Использованы подходы Django-разработки, включая классы-представления, систему фильтрации и кастомную модель пользователя.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
