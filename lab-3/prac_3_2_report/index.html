@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="https://NovemberMoon.github.io/TonikX-ITMO_ICT_WebDevelopment_2025-2026/lab-3/prac_3_1_report/">
+        <link rel="canonical" href="https://NovemberMoon.github.io/TonikX-ITMO_ICT_WebDevelopment_2025-2026/lab-3/prac_3_2_report/">
       
       
-        <link rel="prev" href="../../lab-2/lab_2_report/">
+        <link rel="prev" href="../prac_3_1_report/">
       
-      
-        <link rel="next" href="../prac_3_2_report/">
       
       
         
@@ -25,7 +23,7 @@
     
     
       
-        <title>Практика 3.1 - Лабораторные работы</title>
+        <title>Практика 3.2 - Лабораторные работы</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#no31" class="md-skip">
+        <a href="#no32" class="md-skip">
           Перейти к содержанию
         </a>
       
@@ -110,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Практика 3.1
+              Практика 3.2
             
           </span>
         </div>
@@ -274,7 +272,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../prac_3_1_report/" class="md-tabs__link">
           
   
   
@@ -585,6 +583,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../prac_3_1_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Практика 3.1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -604,7 +630,7 @@
   <span class="md-ellipsis">
     
   
-    Практика 3.1
+    Практика 3.2
   
 
     
@@ -622,7 +648,7 @@
   <span class="md-ellipsis">
     
   
-    Практика 3.1
+    Практика 3.2
   
 
     
@@ -648,15 +674,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#django-orm" class="md-nav__link">
+  <a href="#django-rest-framework-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Тема: Django ORM. Запросы и их выполнение.
+        Тема: Django REST Framework. Создание API.
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Тема: Django ORM. Запросы и их выполнение.">
+    <nav class="md-nav" aria-label="Тема: Django REST Framework. Создание API.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -674,7 +700,41 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 1. Подготовка и настройка моделей
+        🛠 1. Настройка проекта и модели
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-api-apiview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 2. Реализация API "вручную" (APIView)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 3. Использование Generics и вложенных сериализаторов
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 3. Использование Generics и вложенных сериализаторов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задание 1: Вывод воинов и их профессий
       
     </span>
   </a>
@@ -685,19 +745,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💻 2. Ход выполнения работы
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="💻 2. Ход выполнения работы">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Часть 1: Создание объектов
+        Задание 2: Вывод воинов и их скиллов
       
     </span>
   </a>
@@ -705,10 +753,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#3-get-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Часть 2: Фильтрация данных
+        Задание 3: Детальная информация о воине (GET по ID)
       
     </span>
   </a>
@@ -716,10 +764,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#4-delete-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Часть 3: Агрегация и Аннотация
+        Задание 4: Удаление воина (DELETE по ID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-update-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задание 5: Редактирование воина (UPDATE по ID)
       
     </span>
   </a>
@@ -751,34 +810,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../prac_3_2_report/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Практика 3.2
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -818,15 +849,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#django-orm" class="md-nav__link">
+  <a href="#django-rest-framework-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Тема: Django ORM. Запросы и их выполнение.
+        Тема: Django REST Framework. Создание API.
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Тема: Django ORM. Запросы и их выполнение.">
+    <nav class="md-nav" aria-label="Тема: Django REST Framework. Создание API.">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -844,7 +875,41 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🛠 1. Подготовка и настройка моделей
+        🛠 1. Настройка проекта и модели
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-api-apiview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 2. Реализация API "вручную" (APIView)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 3. Использование Generics и вложенных сериализаторов
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 3. Использование Generics и вложенных сериализаторов">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задание 1: Вывод воинов и их профессий
       
     </span>
   </a>
@@ -855,19 +920,7 @@
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        💻 2. Ход выполнения работы
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="💻 2. Ход выполнения работы">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Часть 1: Создание объектов
+        Задание 2: Вывод воинов и их скиллов
       
     </span>
   </a>
@@ -875,10 +928,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#3-get-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Часть 2: Фильтрация данных
+        Задание 3: Детальная информация о воине (GET по ID)
       
     </span>
   </a>
@@ -886,10 +939,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#4-delete-id" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Часть 3: Агрегация и Аннотация
+        Задание 4: Удаление воина (DELETE по ID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-update-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Задание 5: Редактирование воина (UPDATE по ID)
       
     </span>
   </a>
@@ -934,138 +998,175 @@
 
 
 
-<h1 id="no31">Отчет по практической работе №3.1</h1>
-<h2 id="django-orm">Тема: Django ORM. Запросы и их выполнение.</h2>
+<h1 id="no32">Отчет по Практической работе №3.2</h1>
+<h2 id="django-rest-framework-api">Тема: Django REST Framework. Создание API.</h2>
 <blockquote>
 <p><strong>Выполнил:</strong> Христофоров Владислав Николаевич, K3340, WEB 2.3</p>
 </blockquote>
 <h3 id="_1">🎯 Цель работы</h3>
-<p>Получение практических навыков работы с базой данных через Django ORM, включая создание объектов, настройку связей между ними, выполнение запросов на выборку и фильтрацию данных, а также агрегацию данных.</p>
-<h3 id="1">🛠 1. Подготовка и настройка моделей</h3>
-<p>В файл <code>models.py</code> были внесены изменения для удобства работы со связями (добавлен <code>related_name</code>).</p>
-<p><strong>Изменения в коде:</strong></p>
-<pre><code class="language-python">class Driving_License(models.Model):
-    # Добавлен related_name='licenses'
-    car_owner = models.ForeignKey(Car_Owner, on_delete=models.CASCADE, related_name='licenses')
-    ...
-
-class Car_Ownership(models.Model):
-    # Добавлен related_name='ownerships'
-    owner = models.ForeignKey(Car_Owner, on_delete=models.CASCADE, null=True, related_name='ownerships')
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True, related_name='ownerships')
-    ...
-
-</code></pre>
-<p><em>После изменения моделей были созданы и применены миграции.</em></p>
-<pre><code>python manage.py makemigrations
+<p>Изучить основы построения RESTful API с использованием библиотеки Django REST Framework (DRF). Освоить работу с сериализаторами (Serializer, ModelSerializer), создать API-представления вручную (APIView) и с помощью дженериков (Generics), а также реализовать полный набор CRUD-операций для моделей.</p>
+<h3 id="1">🛠 1. Настройка проекта и модели</h3>
+<p>Был создан новый Django-проект <code>warriors_project</code> и приложение <code>warriors_app</code>.
+В <code>models.py</code> описана структура базы данных для системы управления "Воинами":</p>
+<ul>
+<li><strong>Warrior</strong> (Воин): имя, раса, уровень, навыки, профессия</li>
+<li><strong>Profession</strong> (Профессия): название, описание.</li>
+<li><strong>Skill</strong> (Навык): название.</li>
+<li><strong>SkillOfWarrior</strong> (Промежуточная модель): связь Воин-Навык с уровнем владения.</li>
+</ul>
+<p>Применены:</p>
+<pre><code class="language-shell">python manage.py makemigrations
 python manage.py migrate
 </code></pre>
-<h3 id="2">💻 2. Ход выполнения работы</h3>
-<p>Работа проводилась в интерактивном режиме <code>manage.py shell</code>.</p>
-<pre><code>python manage.py shell
+<h3 id="2-api-apiview">💻 2. Реализация API "вручную" (APIView)</h3>
+<p>На начальном этапе были реализованы эндпоинты с использованием базового класса <code>APIView</code> для понимания работы сериализаторов и методов HTTP.</p>
+<p><strong>Код SkillAPIView:</strong></p>
+<pre><code class="language-python">class SkillAPIView(APIView):
+    def get(self, request):
+        skills = Skill.objects.all()
+        serializer = SkillSerializer(skills, many=True)
+        return Response({&quot;Skills&quot;: serializer.data})
+
+    def post(self, request):
+        skill = request.data.get(&quot;skill&quot;)
+        serializer = SkillSerializer(data=skill)
+        if serializer.is_valid(raise_exception=True):
+            skill_saved = serializer.save()
+        return Response({&quot;Success&quot;: &quot;Skill '{}' created&quot;.format(skill_saved.title)})
 </code></pre>
-<p>Были импортированы классы моделей из файла models.py нашего приложения:</p>
-<pre><code>from my_app.models import *
+<p><strong>Код SkillSerializer:</strong></p>
+<pre><code class="language-python">class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = &quot;__all__&quot;
 </code></pre>
-<h4 id="1_1">Часть 1: Создание объектов</h4>
-<p>Были созданы объекты автомобилей, владельцев, удостоверений и установлены связи между ними через промежуточную модель <code>Car_Ownership</code>.</p>
-<p><strong>Создание машин:</strong></p>
-<pre><code class="language-python">c1 = Car.objects.create(license_plate=&quot;A123AA&quot;, brand=&quot;Toyota&quot;, model=&quot;Camry&quot;, color=&quot;Black&quot;)
-c2 = Car.objects.create(license_plate=&quot;B456BB&quot;, brand=&quot;Toyota&quot;, model=&quot;Corolla&quot;, color=&quot;White&quot;)
-c3 = Car.objects.create(license_plate=&quot;C789CC&quot;, brand=&quot;BMW&quot;, model=&quot;X5&quot;, color=&quot;Red&quot;)
-c4 = Car.objects.create(license_plate=&quot;E001KX&quot;, brand=&quot;BMW&quot;, model=&quot;X3&quot;, color=&quot;Blue&quot;)
-c5 = Car.objects.create(license_plate=&quot;H555HH&quot;, brand=&quot;Tesla&quot;, model=&quot;Model S&quot;, color=&quot;Red&quot;)
-c6 = Car.objects.create(license_plate=&quot;K777KK&quot;, brand=&quot;Lada&quot;, model=&quot;Vesta&quot;, color=&quot;Silver&quot;)
+<p><strong>Код в urls.py:</strong></p>
+<pre><code class="language-python">urlpatterns = [
+   ...
+   path('skills/', SkillAPIView.as_view()),
+]
 </code></pre>
-<p><strong>Результат выполнения:</strong>
-<img alt="create_cars" src="../img-prac-3_1/car_objects.png" /></p>
-<p><strong>Создание владельцев:</strong></p>
-<pre><code class="language-python">o1 = Car_Owner.objects.create(first_name=&quot;Олег&quot;, last_name=&quot;Иванов&quot;, birth_date=&quot;1990-05-12&quot;)
-o2 = Car_Owner.objects.create(first_name=&quot;Мария&quot;, last_name=&quot;Петрова&quot;, birth_date=&quot;1995-08-20&quot;)
-o3 = Car_Owner.objects.create(first_name=&quot;Дмитрий&quot;, last_name=&quot;Сидоров&quot;, birth_date=&quot;1988-01-15&quot;)
-o4 = Car_Owner.objects.create(first_name=&quot;Анна&quot;, last_name=&quot;Смирнова&quot;, birth_date=&quot;2000-03-30&quot;)
-o5 = Car_Owner.objects.create(first_name=&quot;Иван&quot;, last_name=&quot;Кузнецов&quot;, birth_date=&quot;1992-11-11&quot;)
-o6 = Car_Owner.objects.create(first_name=&quot;Олег&quot;, last_name=&quot;Попов&quot;, birth_date=&quot;1999-12-31&quot;)
+<p><strong>Результат 1: Получение списка скиллов (GET)</strong></p>
+<p><img alt="skills_get" src="../img-prac-3_2/skills_get.png" /></p>
+<p><strong>Результат 2: Создание нового скилла (POST)</strong></p>
+<p><img alt="skills_post" src="../img-prac-3_2/skills_post.png" /></p>
+<h3 id="3-generics">🚀 3. Использование Generics и вложенных сериализаторов</h3>
+<p>Для реализации финального задания использовались <code>Generics</code> для сокращения кода и вложенные сериализаторы для детального отображения связанных данных.</p>
+<p><strong>Сериализаторы:</strong></p>
+<ul>
+<li><code>WarriorSerializer</code>: Базовый (плоский), используется для записи/обновления.</li>
+<li><code>WarriorProfessionSerializer</code>: Вложенный, показывает детали профессии.</li>
+<li><code>WarriorSkillSerializer</code>: Вложенный, показывает детали скиллов.</li>
+<li><code>WarriorDetailSerializer</code>: Полный, показывает и профессию, и скиллы.</li>
+</ul>
+<p><strong>Код сериализаторов:</strong></p>
+<pre><code class="language-python">class WarriorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Warrior
+        fields = &quot;__all__&quot;
+
+    def update(self, instance, validated_data):
+        skills_data = self.initial_data.get('skill')
+
+        instance = super().update(instance, validated_data)
+
+        if skills_data:
+            instance.skill.clear()
+            for skill_id in skills_data:
+                SkillOfWarrior.objects.create(
+                    warrior=instance,
+                    skill_id=skill_id,
+                    level=1
+                )
+        return instance
+
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = &quot;__all__&quot;
+
+class ProfessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profession
+        fields = [&quot;title&quot;, &quot;description&quot;]
+
+class WarriorProfessionSerializer(serializers.ModelSerializer):
+    profession = ProfessionSerializer(read_only=True)
+    class Meta:
+        model = Warrior
+        fields = &quot;__all__&quot;
+
+class WarriorSkillSerializer(serializers.ModelSerializer):
+    skill = SkillSerializer(many=True, read_only=True)
+    class Meta:
+        model = Warrior
+        fields = &quot;__all__&quot;
+
+class WarriorDetailSerializer(serializers.ModelSerializer):
+    profession = ProfessionSerializer(read_only=True)
+    skill = SkillSerializer(many=True, read_only=True)
+    class Meta:
+        model = Warrior
+        fields = &quot;__all__&quot;
 </code></pre>
-<p><strong>Результат выполнения:</strong>
-<img alt="create_owners" src="../img-prac-3_1/owner_objects.png" /></p>
-<p><strong>Выдача прав:</strong></p>
-<pre><code class="language-python">Driving_License.objects.create(car_owner=o1, number=&quot;111100&quot;, type=&quot;B&quot;, issue_date=&quot;2015-01-10&quot;)
-Driving_License.objects.create(car_owner=o2, number=&quot;222200&quot;, type=&quot;B&quot;, issue_date=&quot;2018-05-20&quot;)
-Driving_License.objects.create(car_owner=o3, number=&quot;333300&quot;, type=&quot;B&quot;, issue_date=&quot;2010-09-15&quot;)
-Driving_License.objects.create(car_owner=o4, number=&quot;444400&quot;, type=&quot;B&quot;, issue_date=&quot;2020-02-01&quot;)
-Driving_License.objects.create(car_owner=o5, number=&quot;555500&quot;, type=&quot;C&quot;, issue_date=&quot;2016-07-07&quot;)
-Driving_License.objects.create(car_owner=o6, number=&quot;666600&quot;, type=&quot;B&quot;, issue_date=&quot;2019-11-11&quot;)
+<p><strong>Код в urls.py:</strong></p>
+<pre><code class="language-python">urlpatterns = [
+    ...
+    path('warriors/profession/', WarriorProfessionListAPIView.as_view()),
+    path('warriors/skill/', WarriorSkillListAPIView.as_view()),
+    path('warriors/&lt;int:pk&gt;/', WarriorRetrieveAPIView.as_view()),
+    path('warriors/delete/&lt;int:pk&gt;/', WarriorDestroyAPIView.as_view()),
+    path('warriors/update/&lt;int:pk&gt;/', WarriorUpdateAPIView.as_view()),
+    ...
+]
 </code></pre>
-<p><strong>Результат выполнения:</strong>
-<img alt="issue_licenses" src="../img-prac-3_1/license_objects.png" /></p>
-<p><strong>Связываем машин и владельцев:</strong></p>
-<pre><code class="language-python">Car_Ownership.objects.create(owner=o1, car=c1, start_date=&quot;2018-01-01&quot;)
-Car_Ownership.objects.create(owner=o5, car=c3, start_date=&quot;2019-01-01&quot;, end_date=&quot;2020-12-31&quot;)
-Car_Ownership.objects.create(owner=o1, car=c3, start_date=&quot;2021-01-01&quot;)
-Car_Ownership.objects.create(owner=o6, car=c6, start_date=&quot;2017-06-01&quot;, end_date=&quot;2018-06-01&quot;)
-Car_Ownership.objects.create(owner=o4, car=c6, start_date=&quot;2018-06-02&quot;)
-Car_Ownership.objects.create(owner=o2, car=c2, start_date=&quot;2019-06-15&quot;)
-Car_Ownership.objects.create(owner=o3, car=c5, start_date=&quot;2010-01-01&quot;)
-Car_Ownership.objects.create(owner=o4, car=c4, start_date=&quot;2022-02-20&quot;)
+<h4 id="1_1">Задание 1: Вывод воинов и их профессий</h4>
+<p>Реализовано с помощью <code>ListAPIView</code> и <code>WarriorProfessionSerializer</code>.</p>
+<p><strong>Код WarriorProfessionListAPIView:</strong></p>
+<pre><code class="language-python">class WarriorProfessionListAPIView(generics.ListAPIView):
+    queryset = Warrior.objects.all()
+    serializer_class = WarriorProfessionSerializer
 </code></pre>
-<p><strong>Результат выполнения:</strong>
-<img alt="create_ownership" src="../img-prac-3_1/ownership_objects.png" /></p>
-<h4 id="2_1">Часть 2: Фильтрация данных</h4>
-<p><strong>Запрос 1. Вывод всех автомобилей марки "Toyota"</strong></p>
-<pre><code class="language-python">Car.objects.filter(brand=&quot;Toyota&quot;)
+<p><strong>Скриншот:</strong></p>
+<p><img alt="warrior_profession" src="../img-prac-3_2/warrior_profession.png" /></p>
+<h4 id="2">Задание 2: Вывод воинов и их скиллов</h4>
+<p>Реализовано с помощью <code>ListAPIView</code> и <code>WarriorSkillSerializer</code>.</p>
+<p><strong>Код WarriorSkillListAPIView:</strong></p>
+<pre><code class="language-python">class WarriorSkillListAPIView(generics.ListAPIView):
+    queryset = Warrior.objects.all()
+    serializer_class = WarriorSkillSerializer
 </code></pre>
-<p><strong>Запрос 2. Найти всех водителей с именем "Олег"</strong></p>
-<pre><code class="language-python">Car_Owner.objects.filter(first_name=&quot;Олег&quot;)
+<p><strong>Скриншот:</strong></p>
+<p><img alt="warrior_skill" src="../img-prac-3_2/warrior_skill.png" /></p>
+<h4 id="3-get-id">Задание 3: Детальная информация о воине (GET по ID)</h4>
+<p>Реализовано с помощью <code>RetrieveAPIView</code> и <code>WarriorDetailSerializer</code>.</p>
+<p><strong>Код WarriorRetrieveAPIView:</strong></p>
+<pre><code class="language-python">class WarriorRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = Warrior.objects.all()
+    serializer_class = WarriorDetailSerializer
 </code></pre>
-<p><strong>Результат:</strong></p>
-<p><img alt="simple_filter" src="../img-prac-3_1/simple_filter.png" /></p>
-<p><strong>Запрос 3. Получение удостоверения по ID владельца</strong></p>
-<p>Использована обратная связь через <code>related_name='licenses'</code>.</p>
-<pre><code class="language-python">owner_obj = Car_Owner.objects.get(id=2)
-license_obj = owner_obj.licenses.first() 
-print(f&quot;Владелец: {owner_obj.last_name}, Права: {license_obj.number}&quot;)
+<p><strong>Скриншот:</strong></p>
+<p><img alt="warrior_detail" src="../img-prac-3_2/warrior_detail.png" /></p>
+<h4 id="4-delete-id">Задание 4: Удаление воина (DELETE по ID)</h4>
+<p>Реализовано с помощью <code>DestroyAPIView</code>.</p>
+<p><strong>Код WarriorDestroyAPIView:</strong></p>
+<pre><code class="language-python">class WarriorDestroyAPIView(generics.DestroyAPIView):
+    queryset = Warrior.objects.all()
+    serializer_class = WarriorSerializer
 </code></pre>
-<p><strong>Запрос 4. Вывод всех владельцев красных машин</strong></p>
-<p>Фильтрация через связанные таблицы: <code>ownerships</code> -&gt; <code>car</code> -&gt; <code>color</code>.</p>
-<pre><code class="language-python">Car_Owner.objects.filter(ownerships__car__color=&quot;Red&quot;).distinct()
+<p><strong>Скриншот:</strong></p>
+<p><img alt="warrior_delete" src="../img-prac-3_2/warrior_delete.png" /></p>
+<h4 id="5-update-id">Задание 5: Редактирование воина (UPDATE по ID)</h4>
+<p>Реализовано с помощью <code>UpdateAPIView</code>. Для корректной работы обновления полей использовался базовый <code>WarriorSerializer</code>.</p>
+<p><strong>Код WarriorUpdateAPIView:</strong></p>
+<pre><code class="language-python">class WarriorUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = WarriorSerializer
+    queryset = Warrior.objects.all()
 </code></pre>
-<p><strong>Запрос 5. Найти владельцев, владеющих машиной с 2010 года</strong></p>
-<pre><code class="language-python">Car_Owner.objects.filter(ownerships__start_date__year=2010)
-</code></pre>
-<p><strong>Результат:</strong></p>
-<p><img alt="complex_filter" src="../img-prac-3_1/complex_filter.png" /></p>
-<h4 id="3">Часть 3: Агрегация и Аннотация</h4>
-<p>Были импортированы функции для агрегации и аннотации</p>
-<pre><code>from django.db.models import Count, Min, Max, Avg
-</code></pre>
-<p><strong>Запрос 6. Дата выдачи самого старого удостоверения (Min)</strong></p>
-<pre><code class="language-python">Driving_License.objects.aggregate(Min('issue_date'))
-</code></pre>
-<p><strong>Запрос 7. Самая поздняя дата начала владения машиной (Max)</strong></p>
-<pre><code class="language-python">Car_Ownership.objects.aggregate(Max('start_date'))
-</code></pre>
-<p><strong>Результат:</strong></p>
-<p><img alt="aggregate" src="../img-prac-3_1/aggregate.png" /></p>
-<p><strong>Запрос 8. Количество машин для каждого водителя</strong></p>
-<p>Использована аннотация <code>Count('ownerships')</code>.</p>
-<pre><code class="language-python">owners_stats = Car_Owner.objects.annotate(cars_count=Count('ownerships'))
-for o in owners_stats:
-    print(f&quot;{o.first_name} {o.last_name}: {o.cars_count} авто&quot;)
-</code></pre>
-<p><strong>Результат:</strong></p>
-<p><img alt="annotate" src="../img-prac-3_1/annotate.png" /></p>
-<p><strong>Запрос 9. Количество машин каждой марки</strong>
-Группировка по полю <code>brand</code>.</p>
-<pre><code class="language-python">Car.objects.values('brand').annotate(total=Count('id'))
-</code></pre>
-<p><strong>Запрос 10. Сортировка автовладельцев по дате выдачи удостоверения</strong></p>
-<pre><code class="language-python">Car_Owner.objects.order_by('licenses__issue_date').distinct()
-</code></pre>
-<p><strong>Результат:</strong></p>
-<p><img alt="group_and_order_by" src="../img-prac-3_1/group_and_order.png" /></p>
+<p><strong>Скриншот:</strong></p>
+<p><img alt="warrior_update" src="../img-prac-3_2/warrior_update.png" /></p>
 <h3 id="_2">✅ Заключение</h3>
-<p>В ходе выполнения практической работы были изучены и освоены ключевые принципы взаимодействия с реляционными базами данных посредством Django ORM. Полученные навыки позволяют эффективно управлять данными: создавать и связывать объекты, выполнять сложные поисковые запросы, а также проводить агрегацию и аннотирование данных, полностью исключая необходимость использования прямых SQL-команд в коде приложения.</p>
+<p>В ходе выполнения практической работы я ознакомился с принципами REST-архитектуры и реализовал API для веб-приложения на базе Django REST Framework. Были освоены различные способы создания представлений (APIView, Generics), работа с сериализаторами (включая вложенные связи) и маршрутизация запросов. В результате был создан функциональный API, поддерживающий чтение, создание, обновление и удаление данных.</p>
 
 
 
