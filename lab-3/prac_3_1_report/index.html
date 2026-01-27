@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://NovemberMoon.github.io/TonikX-ITMO_ICT_WebDevelopment_2025-2026/lab-3/prac_3_1_report/">
       
       
-        <link rel="prev" href="../../lab-2/lab_2_report/">
+        <link rel="prev" href="../lab_3_report/">
       
       
         <link rel="next" href="../prac_3_2_report/">
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../lab_3_report/" class="md-tabs__link">
           
   
   
@@ -580,6 +580,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab_3_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчет
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -944,124 +972,123 @@
 <h3 id="1">🛠 1. Подготовка и настройка моделей</h3>
 <p>В файл <code>models.py</code> были внесены изменения для удобства работы со связями (добавлен <code>related_name</code>).</p>
 <p><strong>Изменения в коде:</strong></p>
-<pre><code class="language-python">class Driving_License(models.Model):
-    # Добавлен related_name='licenses'
-    car_owner = models.ForeignKey(Car_Owner, on_delete=models.CASCADE, related_name='licenses')
-    ...
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Driving_License</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># Добавлен related_name=&#39;licenses&#39;</span>
+    <span class="n">car_owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Car_Owner</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;licenses&#39;</span><span class="p">)</span>
+    <span class="o">...</span>
 
-class Car_Ownership(models.Model):
-    # Добавлен related_name='ownerships'
-    owner = models.ForeignKey(Car_Owner, on_delete=models.CASCADE, null=True, related_name='ownerships')
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True, related_name='ownerships')
-    ...
-
-</code></pre>
+<span class="k">class</span><span class="w"> </span><span class="nc">Car_Ownership</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># Добавлен related_name=&#39;ownerships&#39;</span>
+    <span class="n">owner</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Car_Owner</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;ownerships&#39;</span><span class="p">)</span>
+    <span class="n">car</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Car</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;ownerships&#39;</span><span class="p">)</span>
+    <span class="o">...</span>
+</code></pre></div>
 <p><em>После изменения моделей были созданы и применены миграции.</em></p>
-<pre><code>python manage.py makemigrations
+<div class="highlight"><pre><span></span><code>python manage.py makemigrations
 python manage.py migrate
-</code></pre>
+</code></pre></div>
 <h3 id="2">💻 2. Ход выполнения работы</h3>
 <p>Работа проводилась в интерактивном режиме <code>manage.py shell</code>.</p>
-<pre><code>python manage.py shell
-</code></pre>
+<div class="highlight"><pre><span></span><code>python manage.py shell
+</code></pre></div>
 <p>Были импортированы классы моделей из файла models.py нашего приложения:</p>
-<pre><code>from my_app.models import *
-</code></pre>
+<div class="highlight"><pre><span></span><code>from my_app.models import *
+</code></pre></div>
 <h4 id="1_1">Часть 1: Создание объектов</h4>
 <p>Были созданы объекты автомобилей, владельцев, удостоверений и установлены связи между ними через промежуточную модель <code>Car_Ownership</code>.</p>
 <p><strong>Создание машин:</strong></p>
-<pre><code class="language-python">c1 = Car.objects.create(license_plate=&quot;A123AA&quot;, brand=&quot;Toyota&quot;, model=&quot;Camry&quot;, color=&quot;Black&quot;)
-c2 = Car.objects.create(license_plate=&quot;B456BB&quot;, brand=&quot;Toyota&quot;, model=&quot;Corolla&quot;, color=&quot;White&quot;)
-c3 = Car.objects.create(license_plate=&quot;C789CC&quot;, brand=&quot;BMW&quot;, model=&quot;X5&quot;, color=&quot;Red&quot;)
-c4 = Car.objects.create(license_plate=&quot;E001KX&quot;, brand=&quot;BMW&quot;, model=&quot;X3&quot;, color=&quot;Blue&quot;)
-c5 = Car.objects.create(license_plate=&quot;H555HH&quot;, brand=&quot;Tesla&quot;, model=&quot;Model S&quot;, color=&quot;Red&quot;)
-c6 = Car.objects.create(license_plate=&quot;K777KK&quot;, brand=&quot;Lada&quot;, model=&quot;Vesta&quot;, color=&quot;Silver&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">c1</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;A123AA&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Toyota&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Camry&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Black&quot;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;B456BB&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Toyota&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Corolla&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;White&quot;</span><span class="p">)</span>
+<span class="n">c3</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;C789CC&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;X5&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">)</span>
+<span class="n">c4</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;E001KX&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;BMW&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;X3&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Blue&quot;</span><span class="p">)</span>
+<span class="n">c5</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;H555HH&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Tesla&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Model S&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">)</span>
+<span class="n">c6</span> <span class="o">=</span> <span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">license_plate</span><span class="o">=</span><span class="s2">&quot;K777KK&quot;</span><span class="p">,</span> <span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Lada&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;Vesta&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Silver&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат выполнения:</strong>
 <img alt="create_cars" src="../img-prac-3_1/car_objects.png" /></p>
 <p><strong>Создание владельцев:</strong></p>
-<pre><code class="language-python">o1 = Car_Owner.objects.create(first_name=&quot;Олег&quot;, last_name=&quot;Иванов&quot;, birth_date=&quot;1990-05-12&quot;)
-o2 = Car_Owner.objects.create(first_name=&quot;Мария&quot;, last_name=&quot;Петрова&quot;, birth_date=&quot;1995-08-20&quot;)
-o3 = Car_Owner.objects.create(first_name=&quot;Дмитрий&quot;, last_name=&quot;Сидоров&quot;, birth_date=&quot;1988-01-15&quot;)
-o4 = Car_Owner.objects.create(first_name=&quot;Анна&quot;, last_name=&quot;Смирнова&quot;, birth_date=&quot;2000-03-30&quot;)
-o5 = Car_Owner.objects.create(first_name=&quot;Иван&quot;, last_name=&quot;Кузнецов&quot;, birth_date=&quot;1992-11-11&quot;)
-o6 = Car_Owner.objects.create(first_name=&quot;Олег&quot;, last_name=&quot;Попов&quot;, birth_date=&quot;1999-12-31&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">o1</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Олег&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Иванов&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;1990-05-12&quot;</span><span class="p">)</span>
+<span class="n">o2</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Мария&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Петрова&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;1995-08-20&quot;</span><span class="p">)</span>
+<span class="n">o3</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Дмитрий&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Сидоров&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;1988-01-15&quot;</span><span class="p">)</span>
+<span class="n">o4</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Анна&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Смирнова&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;2000-03-30&quot;</span><span class="p">)</span>
+<span class="n">o5</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Иван&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Кузнецов&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;1992-11-11&quot;</span><span class="p">)</span>
+<span class="n">o6</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Олег&quot;</span><span class="p">,</span> <span class="n">last_name</span><span class="o">=</span><span class="s2">&quot;Попов&quot;</span><span class="p">,</span> <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;1999-12-31&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат выполнения:</strong>
 <img alt="create_owners" src="../img-prac-3_1/owner_objects.png" /></p>
 <p><strong>Выдача прав:</strong></p>
-<pre><code class="language-python">Driving_License.objects.create(car_owner=o1, number=&quot;111100&quot;, type=&quot;B&quot;, issue_date=&quot;2015-01-10&quot;)
-Driving_License.objects.create(car_owner=o2, number=&quot;222200&quot;, type=&quot;B&quot;, issue_date=&quot;2018-05-20&quot;)
-Driving_License.objects.create(car_owner=o3, number=&quot;333300&quot;, type=&quot;B&quot;, issue_date=&quot;2010-09-15&quot;)
-Driving_License.objects.create(car_owner=o4, number=&quot;444400&quot;, type=&quot;B&quot;, issue_date=&quot;2020-02-01&quot;)
-Driving_License.objects.create(car_owner=o5, number=&quot;555500&quot;, type=&quot;C&quot;, issue_date=&quot;2016-07-07&quot;)
-Driving_License.objects.create(car_owner=o6, number=&quot;666600&quot;, type=&quot;B&quot;, issue_date=&quot;2019-11-11&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o1</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;111100&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2015-01-10&quot;</span><span class="p">)</span>
+<span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;222200&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2018-05-20&quot;</span><span class="p">)</span>
+<span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o3</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;333300&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2010-09-15&quot;</span><span class="p">)</span>
+<span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o4</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;444400&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2020-02-01&quot;</span><span class="p">)</span>
+<span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o5</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;555500&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2016-07-07&quot;</span><span class="p">)</span>
+<span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">car_owner</span><span class="o">=</span><span class="n">o6</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;666600&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">issue_date</span><span class="o">=</span><span class="s2">&quot;2019-11-11&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат выполнения:</strong>
 <img alt="issue_licenses" src="../img-prac-3_1/license_objects.png" /></p>
 <p><strong>Связываем машин и владельцев:</strong></p>
-<pre><code class="language-python">Car_Ownership.objects.create(owner=o1, car=c1, start_date=&quot;2018-01-01&quot;)
-Car_Ownership.objects.create(owner=o5, car=c3, start_date=&quot;2019-01-01&quot;, end_date=&quot;2020-12-31&quot;)
-Car_Ownership.objects.create(owner=o1, car=c3, start_date=&quot;2021-01-01&quot;)
-Car_Ownership.objects.create(owner=o6, car=c6, start_date=&quot;2017-06-01&quot;, end_date=&quot;2018-06-01&quot;)
-Car_Ownership.objects.create(owner=o4, car=c6, start_date=&quot;2018-06-02&quot;)
-Car_Ownership.objects.create(owner=o2, car=c2, start_date=&quot;2019-06-15&quot;)
-Car_Ownership.objects.create(owner=o3, car=c5, start_date=&quot;2010-01-01&quot;)
-Car_Ownership.objects.create(owner=o4, car=c4, start_date=&quot;2022-02-20&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o1</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c1</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2018-01-01&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o5</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c3</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2019-01-01&quot;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2020-12-31&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o1</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c3</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2021-01-01&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o6</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c6</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2017-06-01&quot;</span><span class="p">,</span> <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o4</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c6</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2018-06-02&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o2</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c2</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2019-06-15&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o3</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c5</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2010-01-01&quot;</span><span class="p">)</span>
+<span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">owner</span><span class="o">=</span><span class="n">o4</span><span class="p">,</span> <span class="n">car</span><span class="o">=</span><span class="n">c4</span><span class="p">,</span> <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2022-02-20&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат выполнения:</strong>
 <img alt="create_ownership" src="../img-prac-3_1/ownership_objects.png" /></p>
 <h4 id="2_1">Часть 2: Фильтрация данных</h4>
 <p><strong>Запрос 1. Вывод всех автомобилей марки "Toyota"</strong></p>
-<pre><code class="language-python">Car.objects.filter(brand=&quot;Toyota&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">brand</span><span class="o">=</span><span class="s2">&quot;Toyota&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Запрос 2. Найти всех водителей с именем "Олег"</strong></p>
-<pre><code class="language-python">Car_Owner.objects.filter(first_name=&quot;Олег&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">first_name</span><span class="o">=</span><span class="s2">&quot;Олег&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат:</strong></p>
 <p><img alt="simple_filter" src="../img-prac-3_1/simple_filter.png" /></p>
 <p><strong>Запрос 3. Получение удостоверения по ID владельца</strong></p>
 <p>Использована обратная связь через <code>related_name='licenses'</code>.</p>
-<pre><code class="language-python">owner_obj = Car_Owner.objects.get(id=2)
-license_obj = owner_obj.licenses.first() 
-print(f&quot;Владелец: {owner_obj.last_name}, Права: {license_obj.number}&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">owner_obj</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">license_obj</span> <span class="o">=</span> <span class="n">owner_obj</span><span class="o">.</span><span class="n">licenses</span><span class="o">.</span><span class="n">first</span><span class="p">()</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Владелец: </span><span class="si">{</span><span class="n">owner_obj</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s2">, Права: </span><span class="si">{</span><span class="n">license_obj</span><span class="o">.</span><span class="n">number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Запрос 4. Вывод всех владельцев красных машин</strong></p>
 <p>Фильтрация через связанные таблицы: <code>ownerships</code> -&gt; <code>car</code> -&gt; <code>color</code>.</p>
-<pre><code class="language-python">Car_Owner.objects.filter(ownerships__car__color=&quot;Red&quot;).distinct()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ownerships__car__color</span><span class="o">=</span><span class="s2">&quot;Red&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+</code></pre></div>
 <p><strong>Запрос 5. Найти владельцев, владеющих машиной с 2010 года</strong></p>
-<pre><code class="language-python">Car_Owner.objects.filter(ownerships__start_date__year=2010)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ownerships__start_date__year</span><span class="o">=</span><span class="mi">2010</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат:</strong></p>
 <p><img alt="complex_filter" src="../img-prac-3_1/complex_filter.png" /></p>
 <h4 id="3">Часть 3: Агрегация и Аннотация</h4>
 <p>Были импортированы функции для агрегации и аннотации</p>
-<pre><code>from django.db.models import Count, Min, Max, Avg
-</code></pre>
+<div class="highlight"><pre><span></span><code>from django.db.models import Count, Min, Max, Avg
+</code></pre></div>
 <p><strong>Запрос 6. Дата выдачи самого старого удостоверения (Min)</strong></p>
-<pre><code class="language-python">Driving_License.objects.aggregate(Min('issue_date'))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Driving_License</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">Min</span><span class="p">(</span><span class="s1">&#39;issue_date&#39;</span><span class="p">))</span>
+</code></pre></div>
 <p><strong>Запрос 7. Самая поздняя дата начала владения машиной (Max)</strong></p>
-<pre><code class="language-python">Car_Ownership.objects.aggregate(Max('start_date'))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Ownership</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">Max</span><span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">))</span>
+</code></pre></div>
 <p><strong>Результат:</strong></p>
 <p><img alt="aggregate" src="../img-prac-3_1/aggregate.png" /></p>
 <p><strong>Запрос 8. Количество машин для каждого водителя</strong></p>
 <p>Использована аннотация <code>Count('ownerships')</code>.</p>
-<pre><code class="language-python">owners_stats = Car_Owner.objects.annotate(cars_count=Count('ownerships'))
-for o in owners_stats:
-    print(f&quot;{o.first_name} {o.last_name}: {o.cars_count} авто&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">owners_stats</span> <span class="o">=</span> <span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">cars_count</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;ownerships&#39;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">owners_stats</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">o</span><span class="o">.</span><span class="n">cars_count</span><span class="si">}</span><span class="s2"> авто&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Результат:</strong></p>
 <p><img alt="annotate" src="../img-prac-3_1/annotate.png" /></p>
 <p><strong>Запрос 9. Количество машин каждой марки</strong>
 Группировка по полю <code>brand</code>.</p>
-<pre><code class="language-python">Car.objects.values('brand').annotate(total=Count('id'))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;brand&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">))</span>
+</code></pre></div>
 <p><strong>Запрос 10. Сортировка автовладельцев по дате выдачи удостоверения</strong></p>
-<pre><code class="language-python">Car_Owner.objects.order_by('licenses__issue_date').distinct()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">Car_Owner</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;licenses__issue_date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+</code></pre></div>
 <p><strong>Результат:</strong></p>
 <p><img alt="group_and_order_by" src="../img-prac-3_1/group_and_order.png" /></p>
 <h3 id="_2">✅ Заключение</h3>

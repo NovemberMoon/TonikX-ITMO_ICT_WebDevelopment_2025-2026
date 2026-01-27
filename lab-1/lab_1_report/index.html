@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../lab-3/prac_3_1_report/" class="md-tabs__link">
+        <a href="../../lab-3/lab_3_report/" class="md-tabs__link">
           
   
   
@@ -1135,6 +1135,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lab-3/lab_3_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчет
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lab-3/prac_3_1_report/" class="md-nav__link">
         
   
@@ -1748,78 +1776,78 @@
 <p>Разработаны UDP-сервер и UDP-клиент. Сервер ожидает датаграммы на определенном порту, а клиент отправляет датаграмму и ожидает ответ. Использован протокол UDP, который не требует установления соединения.</p>
 <h3 id="_3">Код</h3>
 <h4 id="udp_serverpy">Сервер (udp_server.py)</h4>
-<pre><code class="language-python">import socket
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 
-HOST = 'localhost'
-PORT = 12345
-BUFFER_SIZE = 1024
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
-def main():
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-        s.bind((HOST, PORT))
-        print(f&quot;UDP сервер запущен на {HOST}:{PORT}&quot;)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;UDP сервер запущен на </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        try:
-            while True:
-                data, client_addr = s.recvfrom(BUFFER_SIZE)
-                print(f&quot;Получены данные от {client_addr}: {data.decode('utf-8')}&quot;)
-                reply = &quot;Hello, client!&quot;
-                s.sendto(reply.encode('utf-8'), client_addr)
-                print(f&quot;Отправлено сообщение '{reply}' клиенту {client_addr}&quot;)
-        except KeyboardInterrupt:
-            print(&quot;UDP сервер остановлен&quot;)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Получены данные от </span><span class="si">{</span><span class="n">client_addr</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">reply</span> <span class="o">=</span> <span class="s2">&quot;Hello, client!&quot;</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">client_addr</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Отправлено сообщение &#39;</span><span class="si">{</span><span class="n">reply</span><span class="si">}</span><span class="s2">&#39; клиенту </span><span class="si">{</span><span class="n">client_addr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;UDP сервер остановлен&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h4 id="udp_clientpy">Клиент (udp_client.py)</h4>
-<pre><code class="language-python">import socket
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 
-HOST = 'localhost'
-PORT = 12345
-BUFFER_SIZE = 1024
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
-def main():
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-        s.settimeout(2.0)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 
-        try:
-            msg = &quot;Hello, server!&quot;
-            s.sendto(msg.encode('utf-8'), (HOST, PORT))
-            print(f&quot;Отправлено сообщение '{msg}' серверу {HOST}:{PORT}&quot;)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;Hello, server!&quot;</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Отправлено сообщение &#39;</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#39; серверу </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-            data, address = s.recvfrom(BUFFER_SIZE)
-            print(f&quot;Получен ответ от {address}: {data.decode('utf-8')}&quot;)
-        except ConnectionResetError:
-            print(&quot;Соединение разорвано&quot;)
-        except TimeoutError:
-            print(&quot;Нет ответа от сервера&quot;)
+            <span class="n">data</span><span class="p">,</span> <span class="n">address</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Получен ответ от </span><span class="si">{</span><span class="n">address</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ConnectionResetError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Соединение разорвано&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">TimeoutError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Нет ответа от сервера&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_4">Пояснение</h3>
 <p><strong>Ключевые элементы кода и их назначение:</strong></p>
-<pre><code class="language-python"># Создание UDP-сокета
-socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Создание UDP-сокета</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><code>socket.AF_INET</code> - использование IPv4 адресации</li>
 <li><code>socket.SOCK_DGRAM</code> - указание на протокол UDP (датаграммы)</li>
 </ul>
-<pre><code class="language-python"># Сервер привязывается к порту для получения сообщений
-s.bind((HOST, PORT))
-</code></pre>
-<pre><code class="language-python"># Получение данных и адреса отправителя
-data, client_addr = s.recvfrom(BUFFER_SIZE)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Сервер привязывается к порту для получения сообщений</span>
+<span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Получение данных и адреса отправителя</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recvfrom</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><code>recvfrom()</code> возвращает как данные, так и адрес отправителя</li>
 <li>Это позволяет ответить конкретному клиенту</li>
 </ul>
-<pre><code class="language-python"># Отправка ответа конкретному адресу
-s.sendto(reply.encode('utf-8'), client_addr)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Отправка ответа конкретному адресу</span>
+<span class="n">s</span><span class="o">.</span><span class="n">sendto</span><span class="p">(</span><span class="n">reply</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span> <span class="n">client_addr</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>В UDP нет постоянного соединения, поэтому каждый раз указываем адрес получателя</li>
 </ul>
@@ -1827,14 +1855,14 @@ s.sendto(reply.encode('utf-8'), client_addr)
 <p>Сервер "слушает" на определенном порту. Когда приходит датаграмма, он извлекает данные и адрес отправителя, затем отправляет ответ на этот адрес. Клиент отправляет сообщение и ждет ответ на тот же сокет.</p>
 <h3 id="_5">Примеры работы</h3>
 <p><strong>Запуск сервера:</strong></p>
-<pre><code>UDP сервер запущен на localhost:12345
-Получены данные от ('127.0.0.1', 51049): Hello, server!
-Отправлено сообщение 'Hello, client!' клиенту ('127.0.0.1', 51049)
-</code></pre>
+<div class="highlight"><pre><span></span><code>UDP сервер запущен на localhost:12345
+Получены данные от (&#39;127.0.0.1&#39;, 51049): Hello, server!
+Отправлено сообщение &#39;Hello, client!&#39; клиенту (&#39;127.0.0.1&#39;, 51049)
+</code></pre></div>
 <p><strong>Запуск клиента:</strong></p>
-<pre><code>Отправлено сообщение 'Hello, server!' серверу localhost:12345
-Получен ответ от ('127.0.0.1', 12345): Hello, client!
-</code></pre>
+<div class="highlight"><pre><span></span><code>Отправлено сообщение &#39;Hello, server!&#39; серверу localhost:12345
+Получен ответ от (&#39;127.0.0.1&#39;, 12345): Hello, client!
+</code></pre></div>
 <hr />
 <h2 id="2-tcp">Задание 2: Клиент-серверное приложение (TCP) с математической операцией</h2>
 <h3 id="_6">Описание задания</h3>
@@ -1846,177 +1874,177 @@ s.sendto(reply.encode('utf-8'), client_addr)
 <p>Использован протокол TCP, который требует установления соединения. Сервер прослушивает порт, принимает соединения и обрабатывает каждое соединение. Реализована полная обработка квадратного уравнения с учетом всех особых случаев.</p>
 <h3 id="_8">Код</h3>
 <h4 id="tcp_serverpy">Сервер (tcp_server.py)</h4>
-<pre><code class="language-python">from math import sqrt
-import socket
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 
-HOST = 'localhost'
-PORT = 12345
-BUFFER_SIZE = 1024
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
-def solve_equation(a, b, c):
-    if a == 0:
-        if b == 0:
-            if c == 0:
-                return &quot;Уравнение имеет бесконечное количество решений&quot;
-            else:
-                return &quot;Уравнение не имеет решений&quot;
-        else:
-            x = -c / b
-            return f&quot;Это линейное уравнение. Корень: x = {x:.2f}&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_equation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Уравнение имеет бесконечное количество решений&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;Уравнение не имеет решений&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">c</span> <span class="o">/</span> <span class="n">b</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Это линейное уравнение. Корень: x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    D = b**2 - 4 * a * c
+    <span class="n">D</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span>
 
-    if D &lt; 0:
-        return &quot;У уравнения нет действительных корней&quot;
-    elif D == 0:
-        x = -b / (2 * a)
-        return f&quot;Уравнение имеет один корень: x = {x:.2f}&quot;
-    else:
-        x_1 = (-b - sqrt(D)) / (2 * a)
-        x_2 = (-b + sqrt(D)) / (2 * a)
-        return f&quot;Уравнение имеет два корня: x₁ = {x_1:.2f}, x₂ = {x_2:.2f}&quot;
+    <span class="k">if</span> <span class="n">D</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;У уравнения нет действительных корней&quot;</span>
+    <span class="k">elif</span> <span class="n">D</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Уравнение имеет один корень: x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">x_2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">D</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Уравнение имеет два корня: x₁ = </span><span class="si">{</span><span class="n">x_1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, x₂ = </span><span class="si">{</span><span class="n">x_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
 
 
 
-def main():
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind((HOST, PORT))
-        s.listen(5)
-        print(f&quot;TCP сервер запущен на {HOST}:{PORT}&quot;)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TCP сервер запущен на </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        while True:
-            try:
-                conn, client_addr = s.accept()
-                print(f&quot;Соединение от {client_addr}&quot;)
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">conn</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Соединение от </span><span class="si">{</span><span class="n">client_addr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-                with conn:
-                    data = conn.recv(BUFFER_SIZE)
-                    if not data:
-                        continue
+                <span class="k">with</span> <span class="n">conn</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+                        <span class="k">continue</span>
 
-                    try:
-                        values = data.decode(&quot;utf-8&quot;).split()
-                        if len(values) != 3:
-                            error_msg = &quot;Ошибка: требуется 3 коэффициента (a b c)&quot;
-                            conn.sendall(error_msg.encode(&quot;utf-8&quot;))
-                            continue
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">values</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+                            <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;Ошибка: требуется 3 коэффициента (a b c)&quot;</span>
+                            <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">error_msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+                            <span class="k">continue</span>
 
-                        a, b, c = map(float, values)
-                        result = solve_equation(a, b, c)
-                        conn.sendall(result.encode(&quot;utf-8&quot;))
+                        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">solve_equation</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+                        <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 
-                    except ValueError:
-                        error_msg = &quot;Ошибка: все коэффициенты должны быть числами&quot;
-                        conn.sendall(error_msg.encode(&quot;utf-8&quot;))
-                    except Exception as e:
-                        error_msg = f&quot;Ошибка обработки: {str(e)}&quot;
-                        conn.sendall(error_msg.encode(&quot;utf-8&quot;))
+                    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                        <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;Ошибка: все коэффициенты должны быть числами&quot;</span>
+                        <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">error_msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                        <span class="n">error_msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Ошибка обработки: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">error_msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 
-            except KeyboardInterrupt:
-                print(&quot;Сервер остановлен&quot;)
-                break
-            except Exception as e:
-                print(f&quot;Ошибка сервера: {e}&quot;)
-                continue
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Сервер остановлен&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка сервера: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">continue</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h4 id="tcp_clientpy">Клиент (tcp_client.py)</h4>
-<pre><code class="language-python">import socket
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
 
-HOST = 'localhost'
-PORT = 12345
-BUFFER_SIZE = 1024
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
-def get_equation_coef(coef):
-    while True:
-        try:
-            value = input(coef).strip().replace(&quot;,&quot;, &quot;.&quot;)
-            return float(value)
-        except ValueError:
-            print(&quot;Ошибка: введите число!&quot;)
+<span class="k">def</span><span class="w"> </span><span class="nf">get_equation_coef</span><span class="p">(</span><span class="n">coef</span><span class="p">):</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">coef</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ошибка: введите число!&quot;</span><span class="p">)</span>
 
-def main():
-    print(&quot;Решение квадратного уравнения: ax² + bx + c = 0\n&quot;)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Решение квадратного уравнения: ax² + bx + c = 0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    a = get_equation_coef(&quot;Введите коэффициент a: &quot;)
-    b = get_equation_coef(&quot;Введите коэффициент b: &quot;)
-    c = get_equation_coef(&quot;Введите коэффициент c: &quot;)
+    <span class="n">a</span> <span class="o">=</span> <span class="n">get_equation_coef</span><span class="p">(</span><span class="s2">&quot;Введите коэффициент a: &quot;</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">get_equation_coef</span><span class="p">(</span><span class="s2">&quot;Введите коэффициент b: &quot;</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">get_equation_coef</span><span class="p">(</span><span class="s2">&quot;Введите коэффициент c: &quot;</span><span class="p">)</span>
 
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        try:
-            s.settimeout(10.0)
-            s.connect((HOST, PORT))
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">10.0</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
 
-            message = f&quot;{a} {b} {c}&quot;
-            s.sendall(message.encode(&quot;utf-8&quot;))
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
 
-            data = s.recv(BUFFER_SIZE)
-            response = data.decode(&quot;utf-8&quot;)
-            print(f&quot;\nРезультат: {response}&quot;)
+            <span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Результат: </span><span class="si">{</span><span class="n">response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        except ConnectionRefusedError:
-            print(&quot;Ошибка: не удалось подключиться к серверу&quot;)
-        except socket.timeout:
-            print(&quot;Ошибка: превышено время ожидания ответа от сервера&quot;)
-        except ConnectionResetError:
-            print(&quot;Ошибка: соединение было разорвано сервером&quot;)
-        except Exception as e:
-            print(f&quot;Произошла ошибка: {e}&quot;)
+        <span class="k">except</span> <span class="ne">ConnectionRefusedError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ошибка: не удалось подключиться к серверу&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ошибка: превышено время ожидания ответа от сервера&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ConnectionResetError</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ошибка: соединение было разорвано сервером&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Произошла ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_9">Пояснение</h3>
 <p><strong>Ключевые элементы кода и их назначение:</strong></p>
-<pre><code class="language-python"># Создание TCP-сокета
-socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Создание TCP-сокета</span>
+<span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><code>socket.SOCK_STREAM</code> - указание на протокол TCP (потоковая передача)</li>
 </ul>
-<pre><code class="language-python"># Сервер переходит в режим прослушивания
-s.listen(5)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Сервер переходит в режим прослушивания</span>
+<span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>Сервер готов принимать входящие соединения</li>
 <li>Число 5 - максимальная длина очереди ожидающих соединений</li>
 </ul>
-<pre><code class="language-python"># Принятие входящего соединения
-conn, client_addr = s.accept()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Принятие входящего соединения</span>
+<span class="n">conn</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+</code></pre></div>
 <ul>
 <li><code>accept()</code> блокирует выполнение до подключения клиента</li>
 <li>Возвращает новый сокет <code>conn</code> для общения с этим клиентом</li>
 </ul>
-<pre><code class="language-python"># Клиент устанавливает соединение
-s.connect((HOST, PORT))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Клиент устанавливает соединение</span>
+<span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+</code></pre></div>
 <ul>
 <li>Клиент активно устанавливает соединение с сервером</li>
 </ul>
-<pre><code class="language-python"># Надежная отправка всех данных
-conn.sendall(result.encode(&quot;utf-8&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Надежная отправка всех данных</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</code></pre></div>
 <ul>
 <li><code>sendall()</code> гарантирует отправку всех данных, в отличие от send()</li>
 </ul>
 <h3 id="_10">Примеры работы</h3>
 <p><strong>Сервер:</strong></p>
-<pre><code>TCP сервер запущен на localhost:12345
-Соединение от ('127.0.0.1', 55140)
-</code></pre>
+<div class="highlight"><pre><span></span><code>TCP сервер запущен на localhost:12345
+Соединение от (&#39;127.0.0.1&#39;, 55140)
+</code></pre></div>
 <p><strong>Клиент:</strong></p>
-<pre><code>Решение квадратного уравнения: ax² + bx + c = 0
+<div class="highlight"><pre><span></span><code>Решение квадратного уравнения: ax² + bx + c = 0
 
 Введите коэффициент: a = 1
 Введите коэффициент: b = -3
 Введите коэффициент: c = 2
 
 Результат: Уравнение имеет два корня: x₁ = 1.00, x₂ = 2.00
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="3-http-html-">Задание 3: HTTP-сервер с загрузкой HTML-страницы</h2>
 <h3 id="_11">Описание задания</h3>
@@ -2027,92 +2055,92 @@ conn.sendall(result.encode(&quot;utf-8&quot;))
 <p>Создан простой HTTP-сервер, который читает HTML-файл и отправляет его с корректными HTTP-заголовками. Сервер обрабатывает GET-запросы и возвращает статическую HTML-страницу.</p>
 <h3 id="_13">Код</h3>
 <h4 id="http_serverpy">Сервер (http_server.py)</h4>
-<pre><code class="language-python">import socket
-import os
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-HOST = 'localhost'
-PORT = 12345
-BUFFER_SIZE = 1024
+<span class="n">HOST</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 
-def main():
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    html_path = os.path.join(script_dir, &quot;index.html&quot;)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+    <span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
 
-    if not os.path.exists(html_path):
-        print(f&quot;Ошибка: файл {html_path} не найден&quot;)
-        return
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">html_path</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка: файл </span><span class="si">{</span><span class="n">html_path</span><span class="si">}</span><span class="s2"> не найден&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
 
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        s.bind((HOST, PORT))
-        s.listen(5)
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-        print(f&quot;Сервер запущен на {HOST}:{PORT}&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Сервер запущен на </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        try:
-            while True:
-                conn, addr = s.accept()
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 
-                with conn:
-                    conn.recv(BUFFER_SIZE)
+                <span class="k">with</span> <span class="n">conn</span><span class="p">:</span>
+                    <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
 
-                    with open(html_path, 'r', encoding='utf-8') as f:
-                        html_content = f.read()
+                    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">html_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 
-                    response = (
-                        &quot;HTTP/1.1 200 OK\r\n&quot;
-                        &quot;Content-Type: text/html; charset=utf-8\r\n&quot;
-                        f&quot;Content-Length: {len(html_content.encode('utf-8'))}\r\n&quot;
-                        &quot;\r\n&quot;
-                        f&quot;{html_content}&quot;
-                    )
+                    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+                        <span class="s2">&quot;Content-Type: text/html; charset=utf-8</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Content-Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="si">}</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+                        <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">html_content</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
 
-                    conn.sendall(response.encode('utf-8'))
+                    <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
-                    print(f&quot;Отправлена страница клиенту {addr[0]}&quot;)
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Отправлена страница клиенту </span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        except KeyboardInterrupt:
-            print(&quot;\nСервер остановлен&quot;)
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Сервер остановлен&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h4 id="indexhtml">Файл index.html</h4>
-<pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;UTF-8&quot; /&gt;
-        &lt;title&gt;Простой сервер&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;h1&gt;Привет! Сервер работает&lt;/h1&gt;
-        &lt;p&gt;Это тестовая страница, загруженная с локального сервера.&lt;/p&gt;
-        &lt;ul&gt;
-            &lt;li&gt;Сервер написан на Python&lt;/li&gt;
-            &lt;li&gt;Используются сокеты&lt;/li&gt;
-            &lt;li&gt;Страница загружается из файла&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span> <span class="p">/&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Простой сервер<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Привет! Сервер работает<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Это тестовая страница, загруженная с локального сервера.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Сервер написан на Python<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Используются сокеты<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Страница загружается из файла<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
 <h3 id="_14">Пояснение</h3>
 <p><strong>Ключевые элементы кода и их назначение:</strong></p>
-<pre><code class="language-python"># Определение пути к HTML-файлу
-script_dir = os.path.dirname(os.path.abspath(__file__))
-html_path = os.path.join(script_dir, &quot;index.html&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Определение пути к HTML-файлу</span>
+<span class="n">script_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">html_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">script_dir</span><span class="p">,</span> <span class="s2">&quot;index.html&quot;</span><span class="p">)</span>
+</code></pre></div>
 <ul>
 <li>Получение абсолютного пути к файлу независимо от расположения скрипта</li>
 </ul>
-<pre><code class="language-python"># Формирование HTTP-ответа
-response = (
-    &quot;HTTP/1.1 200 OK\r\n&quot;
-    &quot;Content-Type: text/html; charset=utf-8\r\n&quot;
-    f&quot;Content-Length: {len(html_content.encode('utf-8'))}\r\n&quot;
-    &quot;\r\n&quot;
-    f&quot;{html_content}&quot;
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Формирование HTTP-ответа</span>
+<span class="n">response</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;Content-Type: text/html; charset=utf-8</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;Content-Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="si">}</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">html_content</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
 <ul>
 <li><code>HTTP/1.1 200 OK</code> - строка статуса</li>
 <li><code>Content-Type</code> - тип содержимого (HTML) и кодировка</li>
@@ -2120,18 +2148,18 @@ response = (
 <li>Пустая строка <code>\r\n</code> разделяет заголовки и тело ответа</li>
 <li><code>html_content</code> - собственно HTML-страница</li>
 </ul>
-<pre><code class="language-python"># Чтение HTML-файла
-with open(html_path, 'r', encoding='utf-8') as f:
-    html_content = f.read()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Чтение HTML-файла</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">html_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</code></pre></div>
 <ul>
 <li>Файл читается с указанием кодировки UTF-8 для корректного отображения русских символов</li>
 </ul>
 <h3 id="_15">Примеры работы</h3>
 <p><strong>Сервер:</strong></p>
-<pre><code>Сервер запущен на localhost:12345
+<div class="highlight"><pre><span></span><code>Сервер запущен на localhost:12345
 Отправлена страница клиенту 127.0.0.1
-</code></pre>
+</code></pre></div>
 <p><strong>В браузере по адресу http://localhost:12345:</strong><br />
 <img alt="alt text" src="../img-lab_1/image.png" /></p>
 <hr />
@@ -2144,230 +2172,230 @@ with open(html_path, 'r', encoding='utf-8') as f:
 <p>Разработаны сервер и клиенты с использованием потоков. Сервер обрабатывает каждого клиента в отдельном потоке, обеспечивает рассылку сообщений и управление списком подключенных пользователей.</p>
 <h3 id="_18">Код</h3>
 <h4 id="chat_serverpy">Сервер (chat_server.py)</h4>
-<pre><code class="language-python">import socket
-import threading
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
-HOST = &quot;localhost&quot;
-PORT = 12345
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
 
-clients = {}
-lock = threading.Lock()
+<span class="n">clients</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
 
-def broadcast(message, sender_conn=None):
-    &quot;&quot;&quot;Отправляет сообщение всем клиентам кроме отправителя&quot;&quot;&quot;
-    with lock:
-        clients_copy = clients.copy()
+<span class="k">def</span><span class="w"> </span><span class="nf">broadcast</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">sender_conn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Отправляет сообщение всем клиентам кроме отправителя&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">clients_copy</span> <span class="o">=</span> <span class="n">clients</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-    disconnected = []
-    for conn, nickname in clients_copy.items():
-        if conn != sender_conn:
-            try:
-                conn.send(f&quot;{message}\n&quot;.encode())
-            except:
-                disconnected.append(conn)
+    <span class="n">disconnected</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">conn</span><span class="p">,</span> <span class="n">nickname</span> <span class="ow">in</span> <span class="n">clients_copy</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="o">!=</span> <span class="n">sender_conn</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">disconnected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
 
-    if disconnected:
-        with lock:
-            for conn in disconnected:
-                if conn in clients:
-                    del clients[conn]
+    <span class="k">if</span> <span class="n">disconnected</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">conn</span> <span class="ow">in</span> <span class="n">disconnected</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">conn</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>
+                    <span class="k">del</span> <span class="n">clients</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span>
 
-def handle_client(conn, addr):
-    &quot;&quot;&quot;Обрабатывает подключение одного клиента&quot;&quot;&quot;
-    nickname = f&quot;user_{addr[1]}&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_client</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Обрабатывает подключение одного клиента&quot;&quot;&quot;</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;user_</span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
 
-    try:
-        conn.send(&quot;Введите ваш никнейм: &quot;.encode())
-        nickname_data = conn.recv(1024).decode().strip()
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Введите ваш никнейм: &quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+        <span class="n">nickname_data</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-        if nickname_data:
-            nickname = nickname_data
+        <span class="k">if</span> <span class="n">nickname_data</span><span class="p">:</span>
+            <span class="n">nickname</span> <span class="o">=</span> <span class="n">nickname_data</span>
 
-        with lock:
-            clients[conn] = nickname
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">clients</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span> <span class="o">=</span> <span class="n">nickname</span>
 
-        print(f&quot;Клиент {nickname} подключился&quot;)
-        broadcast(f&quot;{nickname} присоединился к чату!&quot;)
-        conn.send(&quot;Вы в чате! Команды: /list, /quit\n&quot;.encode())
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Клиент </span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2"> подключился&quot;</span><span class="p">)</span>
+        <span class="n">broadcast</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2"> присоединился к чату!&quot;</span><span class="p">)</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Вы в чате! Команды: /list, /quit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
 
-        while True:
-            message = conn.recv(1024).decode().strip()
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-            if not message:
-                break
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">message</span><span class="p">:</span>
+                <span class="k">break</span>
 
-            print(f&quot;Получено от {nickname}: {message}&quot;)
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Получено от </span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-            if message == &quot;/quit&quot;:
-                conn.send(&quot;До свидания!\n&quot;.encode())
-                print(f&quot;Клиент {nickname} вышел по команде&quot;)
-                break
-            elif message == &quot;/list&quot;:
-                with lock:
-                    users = &quot;, &quot;.join(clients.values())
-                conn.send(f&quot;Участники чата: {users}\n&quot;.encode())
-            else:
-                broadcast(f&quot;{nickname}: {message}&quot;, conn)
+            <span class="k">if</span> <span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;/quit&quot;</span><span class="p">:</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;До свидания!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Клиент </span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2"> вышел по команде&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;/list&quot;</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+                    <span class="n">users</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">clients</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Участники чата: </span><span class="si">{</span><span class="n">users</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">broadcast</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 
-    except Exception as e:
-        print(f&quot;Ошибка с клиентом {nickname}: {e}&quot;)
-    finally:
-        with lock:
-            if conn in clients:
-                del clients[conn]
-                print(f&quot;Клиент {nickname} удален из списка&quot;)
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка с клиентом </span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">conn</span> <span class="ow">in</span> <span class="n">clients</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">clients</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Клиент </span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2"> удален из списка&quot;</span><span class="p">)</span>
 
-        broadcast(f&quot;{nickname} покинул чат&quot;)
+        <span class="n">broadcast</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2"> покинул чат&quot;</span><span class="p">)</span>
 
-        try:
-            conn.close()
-        except:
-            pass
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
 
-def main():
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
-        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.bind((HOST, PORT))
-        server.listen()
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
 
-        print(f&quot;Чат-сервер запущен на {HOST}:{PORT}&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Чат-сервер запущен на </span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        try:
-            while True:
-                conn, addr = server.accept()
-                print(f&quot;Новое подключение от {addr}&quot;)
-                thread = threading.Thread(target=handle_client, args=(conn, addr))
-                thread.daemon = True
-                thread.start()
-        except KeyboardInterrupt:
-            print(&quot;\nСервер остановлен&quot;)
-        except Exception as e:
-            print(f&quot;Ошибка сервера: {e}&quot;)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Новое подключение от </span><span class="si">{</span><span class="n">addr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">handle_client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">addr</span><span class="p">))</span>
+                <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Сервер остановлен&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка сервера: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h4 id="chat_clientpy">Клиент (chat_client.py)</h4>
-<pre><code class="language-python">import socket
-import threading
-import time
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-HOST = &quot;localhost&quot;
-PORT = 12345
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
 
-def receive_messages(sock):
-    &quot;&quot;&quot;Получает сообщения от сервера&quot;&quot;&quot;
-    while True:
-        try:
-            message = sock.recv(1024).decode()
-            if not message:
-                print(&quot;\nСервер закрыл соединение&quot;)
-                break
-            print(message, end=&quot;&quot;)
-        except:
-            break
+<span class="k">def</span><span class="w"> </span><span class="nf">receive_messages</span><span class="p">(</span><span class="n">sock</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Получает сообщения от сервера&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">message</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Сервер закрыл соединение&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">break</span>
 
-def main():
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client:
-            client.connect((HOST, PORT))
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+            <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
 
-            receiver = threading.Thread(target=receive_messages, args=(client,))
-            receiver.daemon = True
-            receiver.start()
+            <span class="n">receiver</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">receive_messages</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">client</span><span class="p">,))</span>
+            <span class="n">receiver</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">receiver</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
-            print(&quot;Подключение к чату установлено!&quot;)
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Подключение к чату установлено!&quot;</span><span class="p">)</span>
 
-            try:
-                while True:
-                    message = input()
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="n">message</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
 
-                    if message.strip() == &quot;/quit&quot;:
-                        client.send(b&quot;/quit\n&quot;)
-                        time.sleep(0.1)
-                        break
-                    else:
-                        client.send(f&quot;{message}\n&quot;.encode())
+                    <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;/quit&quot;</span><span class="p">:</span>
+                        <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;/quit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+                        <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
 
-            except KeyboardInterrupt:
-                print(&quot;\nВыход из чата...&quot;)
-                client.send(b&quot;/quit\n&quot;)
-                time.sleep(0.1)
+            <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Выход из чата...&quot;</span><span class="p">)</span>
+                <span class="n">client</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;/quit</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
-    except ConnectionRefusedError:
-        print(&quot;Не удалось подключиться к серверу&quot;)
-    except Exception as e:
-        print(f&quot;Ошибка: {e}&quot;)
+    <span class="k">except</span> <span class="ne">ConnectionRefusedError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Не удалось подключиться к серверу&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_19">Пояснение</h3>
 <p><strong>Ключевые элементы кода и их назначение:</strong></p>
-<pre><code class="language-python"># Словарь для хранения подключенных клиентов
-clients = {}
-lock = threading.Lock()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Словарь для хранения подключенных клиентов</span>
+<span class="n">clients</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+</code></pre></div>
 <ul>
 <li><code>clients</code> - хранит соединения и соответствующие им никнеймы</li>
 <li><code>lock</code> - обеспечивает потокобезопасность при работе с общими данными</li>
 </ul>
-<pre><code class="language-python"># Функция рассылки сообщений
-def broadcast(message, sender_conn=None):
-    with lock:
-        clients_copy = clients.copy()
+<div class="highlight"><pre><span></span><code><span class="c1"># Функция рассылки сообщений</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">broadcast</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">sender_conn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">clients_copy</span> <span class="o">=</span> <span class="n">clients</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-    for conn, nickname in clients_copy.items():
-        if conn != sender_conn:
-            try:
-                conn.send(f&quot;{message}\n&quot;.encode())
-            except:
-                # Удаляем отключившегося клиента
-                pass
-</code></pre>
+    <span class="k">for</span> <span class="n">conn</span><span class="p">,</span> <span class="n">nickname</span> <span class="ow">in</span> <span class="n">clients_copy</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">conn</span> <span class="o">!=</span> <span class="n">sender_conn</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="c1"># Удаляем отключившегося клиента</span>
+                <span class="k">pass</span>
+</code></pre></div>
 <ul>
 <li>Создается копия словаря клиентов для безопасности во время итерации</li>
 <li>Сообщение отправляется всем, кроме отправителя</li>
 <li>Обработка ошибок отправки (клиент отключился)</li>
 </ul>
-<pre><code class="language-python"># Обработка клиента в отдельном потоке
-def handle_client(conn, addr):
-    # Получение никнейма
-    conn.send(&quot;Введите ваш никнейм: &quot;.encode())
-    nickname = conn.recv(1024).decode().strip()
+<div class="highlight"><pre><span></span><code><span class="c1"># Обработка клиента в отдельном потоке</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_client</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">addr</span><span class="p">):</span>
+    <span class="c1"># Получение никнейма</span>
+    <span class="n">conn</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;Введите ваш никнейм: &quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+    <span class="n">nickname</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-    # Добавление в список клиентов
-    with lock:
-        clients[conn] = nickname
+    <span class="c1"># Добавление в список клиентов</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">clients</span><span class="p">[</span><span class="n">conn</span><span class="p">]</span> <span class="o">=</span> <span class="n">nickname</span>
 
-    # Основной цикл обработки сообщений
-    while True:
-        message = conn.recv(1024).decode().strip()
+    <span class="c1"># Основной цикл обработки сообщений</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
-        if not message or message == &quot;/quit&quot;:
-            break
-        elif message == &quot;/list&quot;:
-            # Отправка списка участников
-            pass
-        else:
-            # Рассылка сообщения всем
-            broadcast(f&quot;{nickname}: {message}&quot;, conn)
-</code></pre>
-<pre><code class="language-python"># Запуск потока для каждого клиента
-thread = threading.Thread(target=handle_client, args=(conn, addr))
-thread.daemon = True
-thread.start()
-</code></pre>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">message</span> <span class="ow">or</span> <span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;/quit&quot;</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;/list&quot;</span><span class="p">:</span>
+            <span class="c1"># Отправка списка участников</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Рассылка сообщения всем</span>
+            <span class="n">broadcast</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nickname</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Запуск потока для каждого клиента</span>
+<span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">handle_client</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">addr</span><span class="p">))</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre></div>
 <ul>
 <li>Каждое новое соединение обрабатывается в отдельном потоке</li>
 <li><code>daemon=True</code> позволяет потокам автоматически завершаться при остановке программы</li>
 </ul>
 <h3 id="_20">Примеры работы</h3>
 <p><strong>Сервер:</strong></p>
-<pre><code>Чат-сервер запущен на localhost:12345
-</code></pre>
+<div class="highlight"><pre><span></span><code>Чат-сервер запущен на localhost:12345
+</code></pre></div>
 <p><strong>Клиент 1:</strong></p>
-<pre><code>Подключение к чату установлено!
+<div class="highlight"><pre><span></span><code>Подключение к чату установлено!
 Введите ваш никнейм: Moon
 Moon присоединился к чату!
 Вы в чате! Команды: /list, /quit
@@ -2378,9 +2406,9 @@ November присоединился к чату!
 November: Всем дарова
 Ку
 November покинул чат
-</code></pre>
+</code></pre></div>
 <p><strong>Клиент 2:</strong></p>
-<pre><code>Подключение к чату установлено!
+<div class="highlight"><pre><span></span><code>Подключение к чату установлено!
 Введите ваш никнейм: Sun
 Sun присоединился к чату!
 Вы в чате! Команды: /list, /quit
@@ -2390,9 +2418,9 @@ November присоединился к чату!
 November: Всем дарова
 Moon: Ку
 November покинул чат
-</code></pre>
+</code></pre></div>
 <p><strong>Клиент 3:</strong></p>
-<pre><code>Подключение к чату установлено!
+<div class="highlight"><pre><span></span><code>Подключение к чату установлено!
 Введите ваш никнейм: November
 November присоединился к чату!
 Вы в чате! Команды: /list, /quit
@@ -2404,7 +2432,7 @@ Moon: Ку
 До свидания!
 
 Сервер закрыл соединение
-</code></pre>
+</code></pre></div>
 <hr />
 <h2 id="5-get-post">Задание 5: Веб-сервер для обработки GET и POST запросов</h2>
 <h3 id="_21">Описание задания</h3>
@@ -2421,187 +2449,187 @@ Moon: Ку
 <p>Реализован HTTP-сервер, обрабатывающий GET и POST запросы. При GET запросе возвращается форма для ввода данных и таблица существующих оценок. При POST запросе данные добавляются в хранилище и отображается обновленная страница.</p>
 <h3 id="_23">Код</h3>
 <h4 id="get_post_serverpy">Сервер (get_post_server.py)</h4>
-<pre><code class="language-python">import socket
-from urllib.parse import unquote_plus
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">unquote_plus</span>
 
-HOST = &quot;localhost&quot;
-PORT = 12345
+<span class="n">HOST</span> <span class="o">=</span> <span class="s2">&quot;localhost&quot;</span>
+<span class="n">PORT</span> <span class="o">=</span> <span class="mi">12345</span>
 
-grades = {}
+<span class="n">grades</span> <span class="o">=</span> <span class="p">{}</span>
 
-def handle_request(conn):
-    &quot;&quot;&quot;Обрабатывает HTTP запрос&quot;&quot;&quot;
-    try:
-        request_data = b&quot;&quot;
-        conn.settimeout(2.0)
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_request</span><span class="p">(</span><span class="n">conn</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Обрабатывает HTTP запрос&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">request_data</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
 
-        # Сначала читаем заголовки
-        while b&quot;\r\n\r\n&quot; not in request_data:
-            chunk = conn.recv(4096)
-            if not chunk:
-                break
-            request_data += chunk
+        <span class="c1"># Сначала читаем заголовки</span>
+        <span class="k">while</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">request_data</span><span class="p">:</span>
+            <span class="n">chunk</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">request_data</span> <span class="o">+=</span> <span class="n">chunk</span>
 
-        # Если это POST запрос, читаем тело до конца
-        if request_data.startswith(b&quot;POST&quot;):
-            headers = request_data.split(b&quot;\r\n\r\n&quot;)[0]
-            content_length = 0
-            for line in headers.split(b&quot;\r\n&quot;):
-                if line.lower().startswith(b&quot;content-length:&quot;):
-                    content_length = int(line.split(b&quot;:&quot;)[1].strip())
-                    break
+        <span class="c1"># Если это POST запрос, читаем тело до конца</span>
+        <span class="k">if</span> <span class="n">request_data</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;POST&quot;</span><span class="p">):</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">content_length</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">headers</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;content-length:&quot;</span><span class="p">):</span>
+                    <span class="n">content_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                    <span class="k">break</span>
 
-            body_start = request_data.find(b&quot;\r\n\r\n&quot;) + 4
-            current_body_length = len(request_data) - body_start
+            <span class="n">body_start</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">4</span>
+            <span class="n">current_body_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span> <span class="o">-</span> <span class="n">body_start</span>
 
-            while current_body_length &lt; content_length:
-                chunk = conn.recv(4096)
-                if not chunk:
-                    break
-                request_data += chunk
-                current_body_length = len(request_data) - body_start
+            <span class="k">while</span> <span class="n">current_body_length</span> <span class="o">&lt;</span> <span class="n">content_length</span><span class="p">:</span>
+                <span class="n">chunk</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">4096</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">request_data</span> <span class="o">+=</span> <span class="n">chunk</span>
+                <span class="n">current_body_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">request_data</span><span class="p">)</span> <span class="o">-</span> <span class="n">body_start</span>
 
-        request = request_data.decode('utf-8', errors='ignore')
+        <span class="n">request</span> <span class="o">=</span> <span class="n">request_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
-        # Обрабатываем POST запрос
-        post_success = False
-        if request.startswith(&quot;POST&quot;) and &quot;\r\n\r\n&quot; in request:
-            body = request.split(&quot;\r\n\r\n&quot;, 1)[1]
-            parts = body.split(&quot;&amp;&quot;)
-            subject = &quot;&quot;
-            grade = &quot;&quot;
-            for part in parts:
-                if part.startswith(&quot;subject=&quot;):
-                    subject = unquote_plus(part[8:], encoding='utf-8')
-                elif part.startswith(&quot;grade=&quot;):
-                    grade = unquote_plus(part[6:], encoding='utf-8')
+        <span class="c1"># Обрабатываем POST запрос</span>
+        <span class="n">post_success</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+            <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">)</span>
+            <span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;subject=&quot;</span><span class="p">):</span>
+                    <span class="n">subject</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="mi">8</span><span class="p">:],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;grade=&quot;</span><span class="p">):</span>
+                    <span class="n">grade</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
-            if subject and grade:
-                grades[subject] = grade
-                post_success = True
-                print(f&quot;Добавлена оценка: {subject} - {grade}&quot;)
+            <span class="k">if</span> <span class="n">subject</span> <span class="ow">and</span> <span class="n">grade</span><span class="p">:</span>
+                <span class="n">grades</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span> <span class="o">=</span> <span class="n">grade</span>
+                <span class="n">post_success</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Добавлена оценка: </span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        # Генерируем HTML страницу
-        rows = &quot;&quot;
-        for subject, grade in grades.items():
-            rows += f&quot;&lt;tr&gt;&lt;td&gt;{subject}&lt;/td&gt;&lt;td&gt;{grade}&lt;/td&gt;&lt;/tr&gt;&quot;
+        <span class="c1"># Генерируем HTML страницу</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">grade</span> <span class="ow">in</span> <span class="n">grades</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">rows</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt;tr&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;&quot;</span>
 
-        success_msg = &quot;&quot;
-        if post_success:
-            success_msg = '&lt;p style=&quot;color: green; font-weight: bold;&quot;&gt;Оценка успешно добавлена!&lt;/p&gt;'
+        <span class="n">success_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">post_success</span><span class="p">:</span>
+            <span class="n">success_msg</span> <span class="o">=</span> <span class="s1">&#39;&lt;p style=&quot;color: green; font-weight: bold;&quot;&gt;Оценка успешно добавлена!&lt;/p&gt;&#39;</span>
 
-        html_content = f&quot;&quot;&quot;&lt;!DOCTYPE html&gt;
-            &lt;html&gt;
-            &lt;head&gt;
-                &lt;meta charset=&quot;UTF-8&quot;&gt;
-                &lt;title&gt;Оценки по дисциплинам&lt;/title&gt;
-            &lt;/head&gt;
-            &lt;body&gt;
-                &lt;h1&gt;Добавить оценку&lt;/h1&gt;
-                &lt;form method=&quot;POST&quot;&gt;
-                    Дисциплина: &lt;input type=&quot;text&quot; name=&quot;subject&quot; required&gt;&lt;br&gt;
-                    Оценка: &lt;input type=&quot;text&quot; name=&quot;grade&quot; required&gt;&lt;br&gt;
-                    &lt;input type=&quot;submit&quot; value=&quot;Добавить&quot;&gt;
-                &lt;/form&gt;
+        <span class="n">html_content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+<span class="s2">            &lt;html&gt;</span>
+<span class="s2">            &lt;head&gt;</span>
+<span class="s2">                &lt;meta charset=&quot;UTF-8&quot;&gt;</span>
+<span class="s2">                &lt;title&gt;Оценки по дисциплинам&lt;/title&gt;</span>
+<span class="s2">            &lt;/head&gt;</span>
+<span class="s2">            &lt;body&gt;</span>
+<span class="s2">                &lt;h1&gt;Добавить оценку&lt;/h1&gt;</span>
+<span class="s2">                &lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">                    Дисциплина: &lt;input type=&quot;text&quot; name=&quot;subject&quot; required&gt;&lt;br&gt;</span>
+<span class="s2">                    Оценка: &lt;input type=&quot;text&quot; name=&quot;grade&quot; required&gt;&lt;br&gt;</span>
+<span class="s2">                    &lt;input type=&quot;submit&quot; value=&quot;Добавить&quot;&gt;</span>
+<span class="s2">                &lt;/form&gt;</span>
 
-                {success_msg}
+<span class="s2">                </span><span class="si">{</span><span class="n">success_msg</span><span class="si">}</span>
 
-                &lt;h2&gt;Все оценки&lt;/h2&gt;
-                &lt;table border=&quot;1&quot;&gt;
-                    &lt;tr&gt;&lt;th&gt;Дисциплина&lt;/th&gt;&lt;th&gt;Оценка&lt;/th&gt;&lt;/tr&gt;
-                    {rows}
-                &lt;/table&gt;
-            &lt;/body&gt;
-            &lt;/html&gt;&quot;&quot;&quot;
+<span class="s2">                &lt;h2&gt;Все оценки&lt;/h2&gt;</span>
+<span class="s2">                &lt;table border=&quot;1&quot;&gt;</span>
+<span class="s2">                    &lt;tr&gt;&lt;th&gt;Дисциплина&lt;/th&gt;&lt;th&gt;Оценка&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span>
+<span class="s2">                &lt;/table&gt;</span>
+<span class="s2">            &lt;/body&gt;</span>
+<span class="s2">            &lt;/html&gt;&quot;&quot;&quot;</span>
 
-        # Формируем HTTP ответ
-        response = f&quot;HTTP/1.1 200 OK\r\n&quot;
-        response += &quot;Content-Type: text/html; charset=utf-8\r\n&quot;
-        response += f&quot;Content-Length: {len(html_content.encode('utf-8'))}\r\n&quot;
-        response += &quot;\r\n&quot;
-        response += html_content
+        <span class="c1"># Формируем HTTP ответ</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;HTTP/1.1 200 OK</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;Content-Type: text/html; charset=utf-8</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;Content-Length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span><span class="si">}</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+        <span class="n">response</span> <span class="o">+=</span> <span class="n">html_content</span>
 
-        conn.sendall(response.encode('utf-8'))
-        print(&quot;Ответ успешно отправлен&quot;)
+        <span class="n">conn</span><span class="o">.</span><span class="n">sendall</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ответ успешно отправлен&quot;</span><span class="p">)</span>
 
-    except socket.timeout:
-        print(&quot;Таймаут при чтении запроса&quot;)
-    except Exception as e:
-        print(f&quot;Ошибка: {e}&quot;)
-    finally:
-        conn.close()
+    <span class="k">except</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Таймаут при чтении запроса&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ошибка: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-def main():
-    &quot;&quot;&quot;Запускает сервер&quot;&quot;&quot;
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
-        server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        server.bind((HOST, PORT))
-        server.listen(5)
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Запускает сервер&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span> <span class="k">as</span> <span class="n">server</span><span class="p">:</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
+        <span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
-        print(f&quot;Сервер запущен на http://{HOST}:{PORT}&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Сервер запущен на http://</span><span class="si">{</span><span class="n">HOST</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">PORT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        try:
-            while True:
-                conn, addr = server.accept()
-                print(f&quot;Новое подключение от {addr[0]}:{addr[1]}&quot;)
-                handle_request(conn)
-        except KeyboardInterrupt:
-            print(&quot;\nСервер остановлен&quot;)
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">conn</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Новое подключение от </span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">addr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">handle_request</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Сервер остановлен&quot;</span><span class="p">)</span>
 
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="_24">Пояснение</h3>
 <p><strong>Ключевые элементы кода и их назначение:</strong></p>
-<pre><code class="language-python"># Хранение данных об оценках
-grades = {}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Хранение данных об оценках</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div>
 <ul>
 <li>Простое хранилище в оперативной памяти</li>
 </ul>
-<pre><code class="language-python"># Обработка POST-запроса
-if request.startswith(&quot;POST&quot;) and &quot;\r\n\r\n&quot; in request:
-    body = request.split(&quot;\r\n\r\n&quot;, 1)[1]
-    parts = body.split(&quot;&amp;&quot;)
-    subject = &quot;&quot;
-    grade = &quot;&quot;
-    for part in parts:
-        if part.startswith(&quot;subject=&quot;):
-            subject = unquote_plus(part[8:], encoding='utf-8')
-        elif part.startswith(&quot;grade=&quot;):
-            grade = unquote_plus(part[6:], encoding='utf-8')
+<div class="highlight"><pre><span></span><code><span class="c1"># Обработка POST-запроса</span>
+<span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;POST&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="p">:</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">)</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;subject=&quot;</span><span class="p">):</span>
+            <span class="n">subject</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="mi">8</span><span class="p">:],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;grade=&quot;</span><span class="p">):</span>
+            <span class="n">grade</span> <span class="o">=</span> <span class="n">unquote_plus</span><span class="p">(</span><span class="n">part</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
-    if subject and grade:
-        grades[subject] = grade
-</code></pre>
+    <span class="k">if</span> <span class="n">subject</span> <span class="ow">and</span> <span class="n">grade</span><span class="p">:</span>
+        <span class="n">grades</span><span class="p">[</span><span class="n">subject</span><span class="p">]</span> <span class="o">=</span> <span class="n">grade</span>
+</code></pre></div>
 <ul>
 <li>Извлечение тела POST-запроса (после <code>\r\n\r\n</code>)</li>
 <li>Разбор данных формы в формате <code>application/x-www-form-urlencoded</code></li>
 <li><code>unquote_plus()</code> - декодирование URL-encoded данных (пробелы как + и т.д.)</li>
 <li>Сохранение данных в словарь</li>
 </ul>
-<pre><code class="language-python"># Динамическая генерация HTML-таблицы
-rows = &quot;&quot;
-for subject, grade in grades.items():
-    rows += f&quot;&lt;tr&gt;&lt;td&gt;{subject}&lt;/td&gt;&lt;td&gt;{grade}&lt;/td&gt;&lt;/tr&gt;&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Динамическая генерация HTML-таблицы</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">grade</span> <span class="ow">in</span> <span class="n">grades</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">rows</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&lt;tr&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;td&gt;</span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">&lt;/td&gt;&lt;/tr&gt;&quot;</span>
+</code></pre></div>
 <ul>
 <li>Создание HTML-строк таблицы на основе данных из словаря</li>
 <li>Каждая пара "дисциплина-оценка" становится строкой таблицы</li>
 </ul>
-<pre><code class="language-python"># Форма для ввода данных
-html_content = f&quot;&quot;&quot;
-&lt;form method=&quot;POST&quot;&gt;
-    Дисциплина: &lt;input type=&quot;text&quot; name=&quot;subject&quot; required&gt;
-    Оценка: &lt;input type=&quot;text&quot; name=&quot;grade&quot; required&gt;
-    &lt;input type=&quot;submit&quot; value=&quot;Добавить&quot;&gt;
-&lt;/form&gt;
-&lt;table border=&quot;1&quot;&gt;
-    &lt;tr&gt;&lt;th&gt;Дисциплина&lt;/th&gt;&lt;th&gt;Оценка&lt;/th&gt;&lt;/tr&gt;
-    {rows}
-&lt;/table&gt;
-&quot;&quot;&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Форма для ввода данных</span>
+<span class="n">html_content</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;form method=&quot;POST&quot;&gt;</span>
+<span class="s2">    Дисциплина: &lt;input type=&quot;text&quot; name=&quot;subject&quot; required&gt;</span>
+<span class="s2">    Оценка: &lt;input type=&quot;text&quot; name=&quot;grade&quot; required&gt;</span>
+<span class="s2">    &lt;input type=&quot;submit&quot; value=&quot;Добавить&quot;&gt;</span>
+<span class="s2">&lt;/form&gt;</span>
+<span class="s2">&lt;table border=&quot;1&quot;&gt;</span>
+<span class="s2">    &lt;tr&gt;&lt;th&gt;Дисциплина&lt;/th&gt;&lt;th&gt;Оценка&lt;/th&gt;&lt;/tr&gt;</span>
+<span class="s2">    </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span>
+<span class="s2">&lt;/table&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</code></pre></div>
 <ul>
 <li>HTML-форма с методом POST и обязательными полями</li>
 <li>Динамически вставляемая таблица с текущими оценками</li>
@@ -2609,8 +2637,8 @@ html_content = f&quot;&quot;&quot;
 </ul>
 <h3 id="_25">Примеры работы</h3>
 <p><strong>Сервер:</strong></p>
-<pre><code>Сервер запущен на http://localhost:12345
-</code></pre>
+<div class="highlight"><pre><span></span><code>Сервер запущен на http://localhost:12345
+</code></pre></div>
 <p><strong>В браузере по адресу http://localhost:12345:</strong></p>
 <ol>
 <li>Отображается форма с полями "Дисциплина" и "Оценка"

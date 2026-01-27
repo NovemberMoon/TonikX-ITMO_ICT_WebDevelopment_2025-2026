@@ -14,7 +14,7 @@
         <link rel="prev" href="../../lab-1/lab_1_report/">
       
       
-        <link rel="next" href="../../lab-3/prac_3_1_report/">
+        <link rel="next" href="../../lab-3/lab_3_report/">
       
       
         
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../lab-3/prac_3_1_report/" class="md-tabs__link">
+        <a href="../../lab-3/lab_3_report/" class="md-tabs__link">
           
   
   
@@ -873,6 +873,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lab-3/lab_3_report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отчет
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lab-3/prac_3_1_report/" class="md-nav__link">
         
   
@@ -1232,153 +1260,153 @@
 <hr />
 <h3 id="_4">Основные фрагменты кода</h3>
 <h4 id="1-tour_appmodelspy">1. Модели данных (tour_app/models.py)</h4>
-<pre><code class="language-python">class Tour(models.Model):
-    title = models.CharField(max_length=200, verbose_name=&quot;Название тура&quot;)
-    agency = models.CharField(max_length=200, verbose_name=&quot;Турагенство&quot;)
-    description = models.TextField(verbose_name=&quot;Описание тура&quot;)
-    country = models.CharField(max_length=100, verbose_name=&quot;Страна&quot;)
-    start_date = models.DateField(verbose_name=&quot;Дата начала&quot;)
-    end_date = models.DateField(verbose_name=&quot;Дата окончания&quot;)
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name=&quot;Цена&quot;)
-    payment_conditions = models.TextField(verbose_name=&quot;Условия оплаты&quot;)
-    available_spots = models.IntegerField(verbose_name=&quot;Доступные места&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Tour</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Название тура&quot;</span><span class="p">)</span>
+    <span class="n">agency</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Турагенство&quot;</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Описание тура&quot;</span><span class="p">)</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Страна&quot;</span><span class="p">)</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Дата начала&quot;</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Дата окончания&quot;</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Цена&quot;</span><span class="p">)</span>
+    <span class="n">payment_conditions</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Условия оплаты&quot;</span><span class="p">)</span>
+    <span class="n">available_spots</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Доступные места&quot;</span><span class="p">)</span>
 
-    @property
-    def confirmed_bookings_count(self):
-        return self.booking_set.filter(status='confirmed').count()
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">confirmed_bookings_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">booking_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;confirmed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 
-    def get_available_spots(self):
-        total_booked = self.booking_set.filter(status__in=['pending', 'confirmed']).aggregate(
-            total=models.Sum('persons')
-        )['total'] or 0
-        return self.available_spots - total_booked
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_available_spots</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">total_booked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">booking_set</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">status__in</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pending&#39;</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+            <span class="n">total</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">Sum</span><span class="p">(</span><span class="s1">&#39;persons&#39;</span><span class="p">)</span>
+        <span class="p">)[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">available_spots</span> <span class="o">-</span> <span class="n">total_booked</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Модель <code>Tour</code> представляет тур со всей необходимой информацией. Используется <code>@property</code> для вычисляемого поля <code>confirmed_bookings_count</code>, которое не сохраняется в БД, но доступно как атрибут. Метод <code>get_available_spots()</code> вычисляет реальное количество свободных мест с учетом подтвержденных бронирований.</p>
 <hr />
 <h4 id="2-tour_appmodelspy">2. Система бронирования (tour_app/models.py)</h4>
-<pre><code class="language-python">class Booking(models.Model):
-    STATUS_CHOICES = [
-        ('pending', 'Ожидает подтверждения'),
-        ('confirmed', 'Подтверждено'),
-        ('cancelled', 'Отменено'),
-    ]
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Booking</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">STATUS_CHOICES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;pending&#39;</span><span class="p">,</span> <span class="s1">&#39;Ожидает подтверждения&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span> <span class="s1">&#39;Подтверждено&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;cancelled&#39;</span><span class="p">,</span> <span class="s1">&#39;Отменено&#39;</span><span class="p">),</span>
+    <span class="p">]</span>
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=&quot;Пользователь&quot;)
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, verbose_name=&quot;Тур&quot;)
-    booking_date = models.DateTimeField(auto_now_add=True, verbose_name=&quot;Дата бронирования&quot;)
-    persons = models.IntegerField(default=1, verbose_name=&quot;Количество человек&quot;)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', verbose_name=&quot;Статус&quot;)
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">AUTH_USER_MODEL</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Пользователь&quot;</span><span class="p">)</span>
+    <span class="n">tour</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Tour</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Тур&quot;</span><span class="p">)</span>
+    <span class="n">booking_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Дата бронирования&quot;</span><span class="p">)</span>
+    <span class="n">persons</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Количество человек&quot;</span><span class="p">)</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="n">STATUS_CHOICES</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;pending&#39;</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Статус&quot;</span><span class="p">)</span>
 
-    def clean(self):
-        if self.persons &lt;= 0:
-            raise ValidationError('Количество человек должно быть положительным числом')
-        if hasattr(self, 'tour') and self.tour:
-            if not self.tour.can_book(self.persons):
-                raise ValidationError(f'Недостаточно свободных мест. Доступно: {self.tour.get_available_spots()}')
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">persons</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s1">&#39;Количество человек должно быть положительным числом&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;tour&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">tour</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">tour</span><span class="o">.</span><span class="n">can_book</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">persons</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Недостаточно свободных мест. Доступно: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tour</span><span class="o">.</span><span class="n">get_available_spots</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Модель <code>Booking</code> управляет бронированиями с системой статусов. Метод <code>clean()</code> обеспечивает валидацию данных перед сохранением, проверяя корректность количества человек и доступность мест. Это встроенный механизм Django для проверки данных.</p>
 <hr />
 <h4 id="3-tour_appviewspy">3. Представление списка туров (tour_app/views.py)</h4>
-<pre><code class="language-python">class TourListView(ListView):
-    model = Tour
-    template_name = 'tour_app/tour_list.html'
-    context_object_name = 'tours'
-    paginate_by = 6
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TourListView</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Tour</span>
+    <span class="n">template_name</span> <span class="o">=</span> <span class="s1">&#39;tour_app/tour_list.html&#39;</span>
+    <span class="n">context_object_name</span> <span class="o">=</span> <span class="s1">&#39;tours&#39;</span>
+    <span class="n">paginate_by</span> <span class="o">=</span> <span class="mi">6</span>
 
-    def get_queryset(self):
-        queryset = Tour.objects.filter(end_date__gte=timezone.now().date()).order_by('start_date')
-        self.filterset = TourFilter(self.request.GET, queryset=queryset)
-        return self.filterset.qs
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_queryset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">queryset</span> <span class="o">=</span> <span class="n">Tour</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">end_date__gte</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;start_date&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filterset</span> <span class="o">=</span> <span class="n">TourFilter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">,</span> <span class="n">queryset</span><span class="o">=</span><span class="n">queryset</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">filterset</span><span class="o">.</span><span class="n">qs</span>
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter'] = self.filterset
-        # ... дополнительная логика для активных фильтров
-        return context
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_context_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_context_data</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">context</span><span class="p">[</span><span class="s1">&#39;filter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filterset</span>
+        <span class="c1"># ... дополнительная логика для активных фильтров</span>
+        <span class="k">return</span> <span class="n">context</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Класс-представление <code>TourListView</code> наследуется от <code>ListView</code> и предоставляет список туров. Метод <code>get_queryset()</code> фильтрует только активные туры (с датой окончания в будущем) и применяет систему фильтрации. <code>get_context_data()</code> добавляет фильтры в контекст шаблона.</p>
 <hr />
 <h4 id="4-tour_appfilterspy">4. Система фильтрации (tour_app/filters.py)</h4>
-<pre><code class="language-python">class TourFilter(django_filters.FilterSet):
-    search = django_filters.CharFilter(
-        method='filter_search',
-        label='Поиск'
-    )
-    country = django_filters.CharFilter(
-        field_name='country',
-        lookup_expr='icontains',
-        label='Страна'
-    )
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TourFilter</span><span class="p">(</span><span class="n">django_filters</span><span class="o">.</span><span class="n">FilterSet</span><span class="p">):</span>
+    <span class="n">search</span> <span class="o">=</span> <span class="n">django_filters</span><span class="o">.</span><span class="n">CharFilter</span><span class="p">(</span>
+        <span class="n">method</span><span class="o">=</span><span class="s1">&#39;filter_search&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Поиск&#39;</span>
+    <span class="p">)</span>
+    <span class="n">country</span> <span class="o">=</span> <span class="n">django_filters</span><span class="o">.</span><span class="n">CharFilter</span><span class="p">(</span>
+        <span class="n">field_name</span><span class="o">=</span><span class="s1">&#39;country&#39;</span><span class="p">,</span>
+        <span class="n">lookup_expr</span><span class="o">=</span><span class="s1">&#39;icontains&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Страна&#39;</span>
+    <span class="p">)</span>
 
-    def filter_search(self, queryset, name, value):
-        return queryset.filter(
-            models.Q(title__icontains=value) |
-            models.Q(description__icontains=value) |
-            models.Q(country__icontains=value) |
-            models.Q(agency__icontains=value)
-        )
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queryset</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">queryset</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="n">title__icontains</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="o">|</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="n">description__icontains</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="o">|</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="n">country__icontains</span><span class="o">=</span><span class="n">value</span><span class="p">)</span> <span class="o">|</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">Q</span><span class="p">(</span><span class="n">agency__icontains</span><span class="o">=</span><span class="n">value</span><span class="p">)</span>
+        <span class="p">)</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Используется библиотека <code>django-filters</code> для создания системы фильтрации. Кастомный метод <code>filter_search()</code> позволяет искать по нескольким полям одновременно с помощью объектов <code>Q</code> Django, которые обеспечивают сложные запросы с оператором OR.</p>
 <hr />
 <h4 id="5-tour_appviewspy">5. Панель управления администратора (tour_app/views.py)</h4>
-<pre><code class="language-python">@login_required
-@staff_required
-def management_dashboard(request):
-    period = request.GET.get('period', '30days')
+<div class="highlight"><pre><span></span><code><span class="nd">@login_required</span>
+<span class="nd">@staff_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">management_dashboard</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">period</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;period&#39;</span><span class="p">,</span> <span class="s1">&#39;30days&#39;</span><span class="p">)</span>
 
-    if period == '30days':
-        date_filter = timezone.now() - timezone.timedelta(days=30)
-    # ... логика выбора периода
+    <span class="k">if</span> <span class="n">period</span> <span class="o">==</span> <span class="s1">&#39;30days&#39;</span><span class="p">:</span>
+        <span class="n">date_filter</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="c1"># ... логика выбора периода</span>
 
-    if date_filter:
-        bookings = Booking.objects.filter(booking_date__gte=date_filter)
-        tours = Tour.objects.filter(start_date__gte=date_filter)
-        reviews = Review.objects.filter(review_date__gte=date_filter)
+    <span class="k">if</span> <span class="n">date_filter</span><span class="p">:</span>
+        <span class="n">bookings</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">booking_date__gte</span><span class="o">=</span><span class="n">date_filter</span><span class="p">)</span>
+        <span class="n">tours</span> <span class="o">=</span> <span class="n">Tour</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">start_date__gte</span><span class="o">=</span><span class="n">date_filter</span><span class="p">)</span>
+        <span class="n">reviews</span> <span class="o">=</span> <span class="n">Review</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">review_date__gte</span><span class="o">=</span><span class="n">date_filter</span><span class="p">)</span>
 
-    booking_stats = bookings.aggregate(
-        pending=Count('id', filter=Q(status='pending')),
-        confirmed=Count('id', filter=Q(status='confirmed')),
-        cancelled=Count('id', filter=Q(status='cancelled'))
-    )
-</code></pre>
+    <span class="n">booking_stats</span> <span class="o">=</span> <span class="n">bookings</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
+        <span class="n">pending</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;pending&#39;</span><span class="p">)),</span>
+        <span class="n">confirmed</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;confirmed&#39;</span><span class="p">)),</span>
+        <span class="n">cancelled</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="n">Q</span><span class="p">(</span><span class="n">status</span><span class="o">=</span><span class="s1">&#39;cancelled&#39;</span><span class="p">))</span>
+    <span class="p">)</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Представление для панели управления использует декораторы <code>@login_required</code> и <code>@staff_required</code> для ограничения доступа. Метод <code>aggregate()</code> с условиями <code>filter=Q()</code> позволяет получать агрегированные данные по разным статусам бронирований в одном запросе.</p>
 <hr />
 <h4 id="6-tour_appviewspy">6. Статистика по странам (tour_app/views.py)</h4>
-<pre><code class="language-python">@login_required
-def statistics(request):
-    one_year_ago = timezone.now() - timezone.timedelta(days=365)
+<div class="highlight"><pre><span></span><code><span class="nd">@login_required</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">statistics</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">one_year_ago</span> <span class="o">=</span> <span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">timezone</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
 
-    tours_by_country = Booking.objects.filter(
-        status='confirmed',
-        booking_date__gte=one_year_ago
-    ).values('tour__country').annotate(
-        total_sold=Count('id')
-    ).order_by('-total_sold')
-</code></pre>
+    <span class="n">tours_by_country</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+        <span class="n">status</span><span class="o">=</span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span>
+        <span class="n">booking_date__gte</span><span class="o">=</span><span class="n">one_year_ago</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="s1">&#39;tour__country&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+        <span class="n">total_sold</span><span class="o">=</span><span class="n">Count</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-total_sold&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Этот код реализует требование задания по отображению статистики проданных туров по странам. Используется <code>values()</code> для группировки по странам и <code>annotate()</code> с <code>Count()</code> для подсчета количества бронирований в каждой группе.</p>
 <hr />
 <h4 id="7-user_appmodelspy">7. Кастомная модель пользователя (user_app/models.py)</h4>
-<pre><code class="language-python">class CustomUser(AbstractUser):
-    phone = models.CharField(max_length=20, blank=True, verbose_name=&quot;Телефон&quot;)
-    address = models.TextField(blank=True, verbose_name=&quot;Адрес&quot;)
-    date_of_birth = models.DateField(null=True, blank=True, verbose_name=&quot;Дата рождения&quot;)
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CustomUser</span><span class="p">(</span><span class="n">AbstractUser</span><span class="p">):</span>
+    <span class="n">phone</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Телефон&quot;</span><span class="p">)</span>
+    <span class="n">address</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Адрес&quot;</span><span class="p">)</span>
+    <span class="n">date_of_birth</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose_name</span><span class="o">=</span><span class="s2">&quot;Дата рождения&quot;</span><span class="p">)</span>
 
-    def __str__(self):
-        return f&quot;{self.first_name} {self.last_name} ({self.username})&quot;
-</code></pre>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">)&quot;</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Модель наследуется от <code>AbstractUser</code>, что позволяет расширить стандартную модель пользователя Django без изменения базовой логики аутентификации. Это рекомендуемый подход в Django для добавления дополнительных полей к пользователю.</p>
 <hr />
 <h4 id="8-tour_appdecoratorspy">8. Система разрешений (tour_app/decorators.py)</h4>
-<pre><code class="language-python">def staff_required(view_func):
-    @wraps(view_func)
-    def _wrapped_view(request, *args, **kwargs):
-        if request.user.is_authenticated and request.user.is_staff:
-            return view_func(request, *args, **kwargs)
-        else:
-            messages.error(request, 'Требуются права администратора.')
-            return redirect('tour_list')
-    return _wrapped_view
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">staff_required</span><span class="p">(</span><span class="n">view_func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">view_func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_wrapped_view</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span> <span class="ow">and</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_staff</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">view_func</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">messages</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;Требуются права администратора.&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="s1">&#39;tour_list&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_wrapped_view</span>
+</code></pre></div>
 <p><strong>Объяснение:</strong> Кастомный декоратор для проверки прав администратора. Использует <code>functools.wraps</code> для сохранения метаданных функции и интегрируется с системой сообщений Django для информирования пользователя.</p>
 <hr />
 <h3 id="_5">Примеры работы приложения</h3>
