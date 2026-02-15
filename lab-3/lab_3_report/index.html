@@ -1389,14 +1389,17 @@
 </table>
 <h4 id="33-er-">3.3. ER-диаграмма (Схема связей)</h4>
 <pre class="mermaid"><code>erDiagram
+    City ||--o{ Guest : "from"
+    Guest ||--o{ Booking : "makes"
+    Room ||--o{ Booking : "booked in"
+
+
+    RoomType ||--o{ Room : "has type"
     Floor ||--o{ Room : "located on"
     Floor ||--o{ CleaningSchedule : "cleaned on"
-
-    RoomType ||--o{ Room : "has"
-    City ||--o{ Guest : "from"
-    Room ||--o{ Booking : "booked in"
-    Guest ||--o{ Booking : "makes"
     Employee ||--o{ CleaningSchedule : "assigned to"
+
+
 </code></pre>
 <h3 id="4">4. Ход выполнения работы</h3>
 <h4 id="41">4.1. Инициализация проекта</h4>
@@ -1500,15 +1503,22 @@ python manage.py migrate
 <li>Гости и записи о бронировании.</li>
 </ul>
 <p><strong>Пример данных:</strong></p>
-<p float="left">
-  <img align="top" src="img-lab-3/admin_models.png" width="20%"/>
-   &nbsp;
-  <img align="top" src="img-lab-3/rooms.png" width="20%"/>
-   &nbsp;
-  <img align="top" src="img-lab-3/guests.png" width="20%"/>
-   &nbsp;
-  <img align="top" src="img-lab-3/bookings.png" width="20%"/>
-</p>
+<table style="border: none; width: 100%;">
+  <tr style="border: none;">
+    <td style="border: none; vertical-align: top; width: 20%;">
+      <img src="img-lab-3/admin_models.png" alt="Модели" width="100%"/>
+    </td>
+    <td style="border: none; vertical-align: top; width: 20%;">
+      <img src="img-lab-3/rooms.png" alt="Номера" width="100%"/>
+    </td>
+    <td style="border: none; vertical-align: top; width: 15%;">
+      <img src="img-lab-3/guests.png" alt="Гости" width="100%"/>
+    </td>
+    <td style="border: none; vertical-align: top; width: 25%;">
+      <img src="img-lab-3/bookings.png" alt="Бронирования" width="100%"/>
+    </td>
+  </tr>
+</table>
 
 <h3 id="5-api-drf">5. Реализация API (DRF)</h3>
 <h4 id="51-serializerspy">5.1. Сериализаторы (serializers.py)</h4>
@@ -1645,20 +1655,30 @@ python manage.py migrate
 <p><code>POST /api/bookings/</code></p>
 <ul>
 <li>
-<p><strong>Кейс А (Успех):</strong> Заселение в свободный номер.</p>
-<p><p float="left">
-      <img align="top" src="img-lab-3/post_booking_form_success.png" width="40%"/>
-      &nbsp;
-      <img align="top" src="img-lab-3/post_booking_success.png" width="40%"/>
-  </p></p>
+<p><strong>Кейс А (Успех):</strong> Заселение в свободный номер.
+        <table style="border: none; width: 80%;">
+        <tr style="border: none;">
+            <td style="border: none; vertical-align: top; width: 50%;">
+            <img src="img-lab-3/post_booking_form_success.png" alt="Форма бронирования" width="100%"/>
+            </td>
+            <td style="border: none; vertical-align: top; width: 50%;">
+            <img src="img-lab-3/post_booking_success.png" alt="Успешное бронирование" width="100%"/>
+            </td>
+        </tr>
+        </table></p>
 </li>
 <li>
-<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.</p>
-<p><p float="left">
-      <img align="top" src="img-lab-3/post_booking_form_failure.png" width="40%"/>
-      &nbsp;
-      <img align="top" src="img-lab-3/post_booking_failure.png" width="40%"/>
-  </p></p>
+<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.
+        <table style="border: none; width: 80%;">
+        <tr style="border: none;">
+            <td style="border: none; vertical-align: top; width: 50%;">
+            <img src="img-lab-3/post_booking_form_failure.png" alt="Форма бронирования" width="100%"/>
+            </td>
+            <td style="border: none; vertical-align: top; width: 50%;">
+            <img src="img-lab-3/post_booking_failure.png" alt="Плохое бронирование" width="100%"/>
+            </td>
+        </tr>
+        </table></p>
 </li>
 </ul>
 <h3 id="7-djoser">7. Авторизация и Аутентификация (Djoser)</h3>
