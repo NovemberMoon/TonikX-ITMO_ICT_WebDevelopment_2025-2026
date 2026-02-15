@@ -805,10 +805,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-viewspy-urlspy" class="md-nav__link">
+  <a href="#52-views" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2. Представления (views.py) и Маршруты (urls.py)
+        5.2. Представления (Views) и Фильтрация
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Описание реализованных эндпоинтов
       
     </span>
   </a>
@@ -836,7 +847,7 @@
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Сценарий 1: Просмотр списка текущих заселений
+        Сценарий 1: Просмотр и фильтрация бронирований
       
     </span>
   </a>
@@ -1142,10 +1153,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#52-viewspy-urlspy" class="md-nav__link">
+  <a href="#52-views" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5.2. Представления (views.py) и Маршруты (urls.py)
+        5.2. Представления (Views) и Фильтрация
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Описание реализованных эндпоинтов
       
     </span>
   </a>
@@ -1173,7 +1195,7 @@
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Сценарий 1: Просмотр списка текущих заселений
+        Сценарий 1: Просмотр и фильтрация бронирований
       
     </span>
   </a>
@@ -1247,7 +1269,7 @@
 <p><strong>Вариант:</strong> Администратор гостиницы</p>
 </blockquote>
 <h3 id="1">1. Цель работы</h3>
-<p>Овладеть практическими навыками реализации web-сервисов средствами Django и Django REST Framework (DRF). Создать серверную часть приложения для предметной области "Гостиница", настроить взаимодействие с базой данных, реализовать API для CRUD-операций и настроить систему авторизации.</p>
+<p>Овладеть практическими навыками реализации web-сервисов средствами Django и Django REST Framework (DRF). Создать серверную часть приложения для предметной области "Гостиница", настроить взаимодействие с реляционной базой данных (PostgreSQL), реализовать API для CRUD-операций с фильтрацией и настроить систему авторизации.</p>
 <h3 id="2">2. Задание</h3>
 <p>Разработать информационную систему для администратора гостиницы.</p>
 <p><strong>Основные требования:</strong></p>
@@ -1273,10 +1295,13 @@
 <li>
 <p>Расчет стоимости проживания (автоматически при сохранении брони).</p>
 </li>
+<li>
+<p>Получение списков с фильтрацией (по городу, статусу номера и т.д.).</p>
+</li>
 </ul>
 </li>
 <li>
-<p><strong>Технологии:</strong> Django ORM, DRF, Djoser (авторизация по токенам).</p>
+<p><strong>Технологии:</strong> Django ORM, DRF, Djoser, PostgreSQL.</p>
 </li>
 </ol>
 <h3 id="3">3. Описание предметной области и структуры БД</h3>
@@ -1284,7 +1309,7 @@
 <h4 id="31">3.1. Типы сущностей (Классификация по Э. Кодду)</h4>
 <ul>
 <li>
-<p><strong>Стержневые:</strong> <code>Room</code> (Номер), <code>Guest</code> (Клиент), <code>Employee</code> (Сотрудник). Независимые сущности.</p>
+<p><strong>Стержневые:</strong> <code>Floor</code> (Этаж), <code>Room</code> (Номер), <code>Guest</code> (Клиент), <code>Employee</code> (Сотрудник). Независимые сущности.</p>
 </li>
 <li>
 <p><strong>Характеристические:</strong> <code>RoomType</code> (Тип номера), <code>City</code> (Город). Справочники, уточняющие свойства стержневых сущностей.</p>
@@ -1325,10 +1350,16 @@
 <td><code>name</code></td>
 </tr>
 <tr>
+<td><strong>Floor</strong></td>
+<td>Стержневая</td>
+<td>Этажи</td>
+<td><code>number</code></td>
+</tr>
+<tr>
 <td><strong>Room</strong></td>
 <td>Стержневая</td>
 <td>Номера</td>
-<td><code>number</code>, <code>room_type</code> (FK), <code>floor</code>, <code>phone</code>, <code>status</code></td>
+<td><code>number</code>, <code>room_type</code> (FK), <code>floor</code> (FK), <code>phone</code>, <code>status</code></td>
 </tr>
 <tr>
 <td><strong>Guest</strong></td>
@@ -1352,12 +1383,15 @@
 <td><strong>CleaningSchedule</strong></td>
 <td>Ассоциативная</td>
 <td>График уборки</td>
-<td><code>employee</code> (FK), <code>floor</code>, <code>day_of_week</code></td>
+<td><code>employee</code> (FK), <code>floor</code> (FK), <code>day_of_week</code></td>
 </tr>
 </tbody>
 </table>
 <h4 id="33-er-">3.3. ER-диаграмма (Схема связей)</h4>
 <pre class="mermaid"><code>erDiagram
+    Floor ||--o{ Room : "located on"
+    Floor ||--o{ CleaningSchedule : "cleaned on"
+
     RoomType ||--o{ Room : "has"
     City ||--o{ Guest : "from"
     Room ||--o{ Booking : "booked in"
@@ -1366,13 +1400,29 @@
 </code></pre>
 <h3 id="4">4. Ход выполнения работы</h3>
 <h4 id="41">4.1. Инициализация проекта</h4>
-<p>Создан проект <code>hotel_project</code> и приложение <code>hotel_app</code>. В файле <code>hotel_project/settings.py</code> подключены необходимые приложения: <code>rest_framework</code>, <code>djoser</code> и <code>hotel_app</code>.</p>
+<ol>
+<li>Создана директория проекта и виртуальное окружение.</li>
+<li>Установлены необходимые библиотеки: <code>Django</code>, <code>djangorestframework</code>, <code>psycopg2-binary</code>, <code>python-dotenv</code>, <code>djoser</code>.</li>
+<li>Инициализирован Django-проект <code>hotel_project</code> и создано приложение <code>hotel_app</code></li>
+</ol>
 <div class="highlight"><pre><span></span><code>django-admin<span class="w"> </span>startproject<span class="w"> </span>hotel_project
 <span class="nb">cd</span><span class="w"> </span>hotel_project
 python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>hotel_app
 </code></pre></div>
+<p><strong>Настройка БД (PostgreSQL):</strong> В файле <code>settings.py</code> настроено подключение к PostgreSQL через переменные окружения (<code>.env</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s1">&#39;django.db.backends.postgresql&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_NAME&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;USER&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_USER&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;PASSWORD&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_PASSWORD&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;HOST&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_HOST&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;PORT&#39;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;DB_PORT&#39;</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <h4 id="42-modelspy">4.2. Реализация моделей (models.py)</h4>
-<p>В файле <code>models.py</code> описаны классы моделей. Реализована сложная валидация данных на уровне моделей (метод clean в модели Booking), проверяющая даты, статус ремонта и переполнение номера.</p>
+<p>В файле <code>models.py</code> описаны классы моделей. Для обеспечения целостности данных использован метод <code>clean()</code>, реализующий бизнес-логику (проверка дат, статуса ремонта и переполнения номера).</p>
 <p><strong>Фрагмент кода (Модель Booking с валидацией):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Booking</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Бронирование&quot;&quot;&quot;</span>
@@ -1440,17 +1490,26 @@ python<span class="w"> </span>manage.py<span class="w"> </span>startapp<span cla
 python manage.py migrate
 </code></pre></div>
 <h4 id="43">4.3. Наполнение базы данных</h4>
-<p>Модели были зарегистрированы в файле <code>hotel_app/admin.py</code>. Затем для тестирования системы база данных была наполнена тестовыми данными с помощью админ-панели Django. Были созданы:</p>
+<p>Модели были зарегистрированы в файле <code>hotel_app/admin.py</code>. База данных была наполнена тестовыми данными (города, типы номеров, этажи, сотрудники, гости) для проверки работоспособности системы.</p>
 <ul>
 <li>Города: Москва, Санкт-Петербург, Сочи и др.</li>
 <li>Типы номеров: Стандарт, Комфорт, Люкс.</li>
+<li>Этажи: 1-5.</li>
 <li>Номера: 101, 102, 205 и т.д.</li>
 <li>Сотрудники и их графики уборки.</li>
 <li>Гости и записи о бронировании.</li>
 </ul>
-<p><img alt="rooms" src="../img-lab-3/rooms.png" /></p>
-<p><img alt="guests" src="../img-lab-3/guests.png" /></p>
-<p><img alt="bookings" src="../img-lab-3/bookings.png" /></p>
+<p><strong>Пример данных:</strong></p>
+<p float="left">
+  <img align="top" src="img-lab-3/admin_models.png" width="20%"/>
+   &nbsp;
+  <img align="top" src="img-lab-3/rooms.png" width="20%"/>
+   &nbsp;
+  <img align="top" src="img-lab-3/guests.png" width="20%"/>
+   &nbsp;
+  <img align="top" src="img-lab-3/bookings.png" width="20%"/>
+</p>
+
 <h3 id="5-api-drf">5. Реализация API (DRF)</h3>
 <h4 id="51-serializerspy">5.1. Сериализаторы (serializers.py)</h4>
 <p>Для преобразования моделей в JSON использованы <code>ModelSerializer</code>.</p>
@@ -1500,45 +1559,114 @@ python manage.py migrate
                 <span class="k">raise</span> <span class="n">serializers</span><span class="o">.</span><span class="n">ValidationError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">messages</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">data</span>
 </code></pre></div>
-<h4 id="52-viewspy-urlspy">5.2. Представления (views.py) и Маршруты (urls.py)</h4>
-<p>Использованы <code>Generics</code> (<code>ListCreateAPIView</code>, <code>RetrieveUpdateDestroyAPIView</code>) для реализации полного набора CRUD-операций для всех моделей.</p>
+<h4 id="52-views">5.2. Представления (Views) и Фильтрация</h4>
+<p>Использованы <code>Generics</code> (<code>ListCreateAPIView</code>, <code>RetrieveUpdateDestroyAPIView</code>) для реализации полного набора CRUD-операций для всех моделей. Подключена фильтрация <code>django-filters</code>.</p>
 <p><strong>Фрагмент кода (Представления для бронирований):</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BookingList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookingSerializer</span>
+    <span class="n">filter_backends</span> <span class="o">=</span> <span class="p">[</span><span class="n">DjangoFilterBackend</span><span class="p">]</span>
+    <span class="n">filterset_fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;guest__last_name&#39;</span><span class="p">,</span> <span class="s1">&#39;room__number&#39;</span><span class="p">,</span> <span class="s1">&#39;is_active&#39;</span><span class="p">,</span> <span class="s1">&#39;check_in&#39;</span><span class="p">]</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">BookingDetail</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">RetrieveUpdateDestroyAPIView</span><span class="p">):</span>
     <span class="n">queryset</span> <span class="o">=</span> <span class="n">Booking</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
     <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">BookingSerializer</span>
 </code></pre></div>
-<p><strong>Реализованные эндпоинты:</strong></p>
-<ul>
-<li><code>/api/rooms/</code> — Работа с номерами.</li>
-<li><code>/api/guests/</code> — Работа с гостями.</li>
-<li><code>/api/bookings/</code> — Управление заселением.</li>
-<li><code>/api/employees/</code> — Управление персоналом.</li>
-<li><code>/api/schedules/</code> — Управление графиком уборки.</li>
-</ul>
+<h4 id="53">5.3 Описание реализованных эндпоинтов</h4>
+<p>В соответствии с заданием, реализован API, покрывающий все сущности.</p>
+<table>
+<thead>
+<tr>
+<th>Метод</th>
+<th>URL</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/rooms/</code></td>
+<td>Список номеров / Создать номер (фильтры: статус, этаж)</td>
+</tr>
+<tr>
+<td>GET, PUT, DEL</td>
+<td><code>/api/rooms/{id}/</code></td>
+<td>Детали номера, изменение, удаление</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/guests/</code></td>
+<td>Список гостей (фильтр: город, фамилия)</td>
+</tr>
+<tr>
+<td>GET, PUT, DEL</td>
+<td><code>/api/guests/{id}/</code></td>
+<td>Детали гостя</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/bookings/</code></td>
+<td>Список бронирований (фильтр: гость, номер, даты)</td>
+</tr>
+<tr>
+<td>GET, PUT, DEL</td>
+<td><code>/api/bookings/{id}/</code></td>
+<td>Управление конкретной бронью</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/employees/</code></td>
+<td>Список сотрудников</td>
+</tr>
+<tr>
+<td>GET, POST</td>
+<td><code>/api/schedules/</code></td>
+<td>Графики уборки</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/room-types/</code></td>
+<td>Справочник типов номеров</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/api/cities/</code></td>
+<td>Справочник городов</td>
+</tr>
+</tbody>
+</table>
 <h3 id="6">6. Примеры работы системы</h3>
-<h4 id="1_1">Сценарий 1: Просмотр списка текущих заселений</h4>
-<p>Администратор запрашивает список всех бронирований. Система возвращает JSON с подробной информацией о гостях и номерах.</p>
-<p><img alt="api_bookings" src="../img-lab-3/api_bookings.png" /></p>
+<h4 id="1_1">Сценарий 1: Просмотр и фильтрация бронирований</h4>
+<p>Администратор запрашивает список бронирований комнаты 101.</p>
+<p><code>GET /api/bookings/?room__number=101</code></p>
+<p><img alt="api_bookings" src="../img-lab-3/api_bookings_room.png" /></p>
 <h4 id="2-">Сценарий 2: Заселение гостя (Валидация бизнес-логики)</h4>
 <p>Администратор пытается заселить гостя.</p>
+<p><code>POST /api/bookings/</code></p>
 <ul>
 <li>
 <p><strong>Кейс А (Успех):</strong> Заселение в свободный номер.</p>
-<p><img alt="post_booking_form_success" src="../img-lab-3/post_booking_form_success.png" /></p>
-<p><img alt="post_booking_success" src="../img-lab-3/post_booking_success.png" /></p>
+<p><p float="left">
+      <img align="top" src="img-lab-3/post_booking_form_success.png" width="40%"/>
+      &nbsp;
+      <img align="top" src="img-lab-3/post_booking_success.png" width="40%"/>
+  </p></p>
 </li>
 <li>
-<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который уже занят (превышение вместимости) или находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.</p>
-<p><img alt="post_booking_form_failure" src="../img-lab-3/post_booking_form_failure.png" /></p>
-<p><img alt="post_booking_failure" src="../img-lab-3/post_booking_failure.png" /></p>
+<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.</p>
+<p><p float="left">
+      <img align="top" src="img-lab-3/post_booking_form_failure.png" width="40%"/>
+      &nbsp;
+      <img align="top" src="img-lab-3/post_booking_failure.png" width="40%"/>
+  </p></p>
 </li>
 </ul>
 <h3 id="7-djoser">7. Авторизация и Аутентификация (Djoser)</h3>
-<p>Подключена библиотека <code>Djoser</code> для управления пользователями. Реализована аутентификация по токенам (<code>TokenAuthentication</code>).</p>
+<p>Подключена библиотека <code>Djoser</code> для управления пользователями. Реализована аутентификация по токенам.</p>
+<p><strong>Конфигурация (urls.py):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">path</span><span class="p">(</span><span class="s1">&#39;auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls&#39;</span><span class="p">)),</span>
+<span class="n">path</span><span class="p">(</span><span class="s1">&#39;auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;djoser.urls.authtoken&#39;</span><span class="p">)),</span>
+</code></pre></div>
 <ol>
 <li><strong>Регистрация пользователя:</strong> <code>POST /auth/users/</code></li>
 <li><strong>Вход в систему:</strong> <code>POST /auth/token/login/</code></li>
@@ -1548,7 +1676,7 @@ python manage.py migrate
 <p><strong>Успешное получение токена при входе:</strong></p>
 <p><img alt="token_create" src="../img-lab-3/token_create.png" /></p>
 <h3 id="_1">Заключение</h3>
-<p>В результате выполнения лабораторной работы была успешно спроектирована и реализована серверная часть системы для администратора гостиницы, включающая нормализованную базу данных (3НФ) с учетом бизнес-логики предметной области, полноценный REST API с поддержкой CRUD и вложенной сериализации, а также систему авторизации на базе токенов.</p>
+<p>В результате выполнения лабораторной работы успешно спроектирована и реализована серверная часть системы для администратора гостиницы, включающая нормализованную базу данных (3НФ) (PostgreSQL) с учетом бизнес-логики предметной области, полноценный REST API на DRF с поддержкой CRUD, вложенной сериализации и фильтрацией, а также система авторизации на базе токенов.</p>
 
 
 
