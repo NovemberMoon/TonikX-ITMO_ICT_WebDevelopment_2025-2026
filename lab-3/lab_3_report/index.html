@@ -1496,28 +1496,28 @@ python manage.py migrate
 <p>Модели были зарегистрированы в файле <code>hotel_app/admin.py</code>. База данных была наполнена тестовыми данными (города, типы номеров, этажи, сотрудники, гости) для проверки работоспособности системы.</p>
 <ul>
 <li>Города: Москва, Санкт-Петербург, Сочи и др.</li>
-<li>Типы номеров: Стандарт, Комфорт, Люкс.</li>
+<li>Типы номеров: Эконом, Стандарт, Комфорт, Люкс, Президентский</li>
 <li>Этажи: 1-5.</li>
 <li>Номера: 101, 102, 205 и т.д.</li>
 <li>Сотрудники и их графики уборки.</li>
 <li>Гости и записи о бронировании.</li>
 </ul>
 <p><strong>Пример данных:</strong></p>
-<table style="border: none; width: 100%;">
-  <tr style="border: none;">
-    <td style="border: none; vertical-align: top; width: 20%;">
-      <img src="img-lab-3/admin_models.png" alt="Модели" width="100%"/>
-    </td>
-    <td style="border: none; vertical-align: top; width: 20%;">
-      <img src="img-lab-3/rooms.png" alt="Номера" width="100%"/>
-    </td>
-    <td style="border: none; vertical-align: top; width: 15%;">
-      <img src="img-lab-3/guests.png" alt="Гости" width="100%"/>
-    </td>
-    <td style="border: none; vertical-align: top; width: 25%;">
-      <img src="img-lab-3/bookings.png" alt="Бронирования" width="100%"/>
-    </td>
-  </tr>
+<table style="border: none; border-collapse: collapse; width: 100%;">
+    <tr style="border: none;">
+        <td style="border: none; vertical-align: top; width: 25%; padding: 5px;">
+            <img src="../img-lab-3/admin_models.png" style="width: 100%;">
+        </td>
+        <td style="border: none; vertical-align: top; width: 25%; padding: 5px;">
+            <img src="../img-lab-3/rooms.png" style="width: 100%;">
+        </td>
+        <td style="border: none; vertical-align: top; width: 20%; padding: 5px;">
+            <img src="../img-lab-3/guests.png" style="width: 100%;">
+        </td>
+        <td style="border: none; vertical-align: top; width: 30%; padding: 5px;">
+            <img src="../img-lab-3/bookings.png" style="width: 100%;">
+        </td>
+    </tr>
 </table>
 
 <h3 id="5-api-drf">5. Реализация API (DRF)</h3>
@@ -1649,36 +1649,36 @@ python manage.py migrate
 <h4 id="1_1">Сценарий 1: Просмотр и фильтрация бронирований</h4>
 <p>Администратор запрашивает список бронирований комнаты 101.</p>
 <p><code>GET /api/bookings/?room__number=101</code></p>
-<p><img alt="api_bookings" src="../img-lab-3/api_bookings_room.png" /></p>
+<p><img alt="api_bookings" src="../img-lab-3/api_bookings_room.png" width="60%" /></p>
 <h4 id="2-">Сценарий 2: Заселение гостя (Валидация бизнес-логики)</h4>
 <p>Администратор пытается заселить гостя.</p>
 <p><code>POST /api/bookings/</code></p>
 <ul>
 <li>
-<p><strong>Кейс А (Успех):</strong> Заселение в свободный номер.
-        <table style="border: none; width: 80%;">
-        <tr style="border: none;">
-            <td style="border: none; vertical-align: top; width: 50%;">
-            <img src="img-lab-3/post_booking_form_success.png" alt="Форма бронирования" width="100%"/>
-            </td>
-            <td style="border: none; vertical-align: top; width: 50%;">
-            <img src="img-lab-3/post_booking_success.png" alt="Успешное бронирование" width="100%"/>
-            </td>
-        </tr>
-        </table></p>
+<p><strong>Кейс А (Успех):</strong> Заселение в свободный номер.</p>
+<p><table style="border: none; border-collapse: collapse; width: 100%;">
+    <tr style="border: none;">
+        <td style="border: none; vertical-align: top; width: 50%; padding: 5px;">
+            <img src="../img-lab-3/post_booking_form_success.png" style="width: 100%;">
+        </td>
+        <td style="border: none; vertical-align: top; width: 50%; padding: 5px;">
+            <img src="../img-lab-3/post_booking_success.png" style="width: 100%;">
+        </td>
+    </tr>
+</table></p>
 </li>
 <li>
-<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.
-        <table style="border: none; width: 80%;">
-        <tr style="border: none;">
-            <td style="border: none; vertical-align: top; width: 50%;">
-            <img src="img-lab-3/post_booking_form_failure.png" alt="Форма бронирования" width="100%"/>
-            </td>
-            <td style="border: none; vertical-align: top; width: 50%;">
-            <img src="img-lab-3/post_booking_failure.png" alt="Плохое бронирование" width="100%"/>
-            </td>
-        </tr>
-        </table></p>
+<p><strong>Кейс Б (Ошибка):</strong> Попытка заселить гостя в номер, который находится на ремонте. Система возвращает ошибку <code>400 Bad Request</code>.</p>
+<p><table style="border: none; border-collapse: collapse; width: 100%;">
+    <tr style="border: none;">
+        <td style="border: none; vertical-align: top; width: 50%; padding: 5px;">
+            <img src="../img-lab-3/post_booking_form_failure.png" style="width: 100%;">
+        </td>
+        <td style="border: none; vertical-align: top; width: 50%; padding: 5px;">
+            <img src="../img-lab-3/post_booking_failure.png" style="width: 100%;">
+        </td>
+    </tr>
+</table></p>
 </li>
 </ul>
 <h3 id="7-djoser">7. Авторизация и Аутентификация (Djoser)</h3>
@@ -1692,9 +1692,9 @@ python manage.py migrate
 <li><strong>Вход в систему:</strong> <code>POST /auth/token/login/</code></li>
 </ol>
 <p><strong>Регистрация пользователя:</strong></p>
-<p><img alt="auth_users" src="../img-lab-3/auth_users.png" /></p>
+<p><img alt="auth_users" src="../img-lab-3/auth_users.png" width="60%" /></p>
 <p><strong>Успешное получение токена при входе:</strong></p>
-<p><img alt="token_create" src="../img-lab-3/token_create.png" /></p>
+<p><img alt="token_create" src="../img-lab-3/token_create.png" width="60%" /></p>
 <h3 id="_1">Заключение</h3>
 <p>В результате выполнения лабораторной работы успешно спроектирована и реализована серверная часть системы для администратора гостиницы, включающая нормализованную базу данных (3НФ) (PostgreSQL) с учетом бизнес-логики предметной области, полноценный REST API на DRF с поддержкой CRUD, вложенной сериализации и фильтрацией, а также система авторизации на базе токенов.</p>
 
