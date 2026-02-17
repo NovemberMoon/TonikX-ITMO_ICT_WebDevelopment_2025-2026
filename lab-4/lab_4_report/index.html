@@ -992,7 +992,18 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Заключение
+        5. Инструкция по установке и запуску
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Заключение
       
     </span>
   </a>
@@ -1228,7 +1239,18 @@
   <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Заключение
+        5. Инструкция по установке и запуску
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Заключение
       
     </span>
   </a>
@@ -1434,18 +1456,44 @@
 <p><img alt="Employees" src="../img-lab-4/employees.png" width="80%" /></p>
 <p><img alt="Schedules" src="../img-lab-4/schedules.png" width="80%" /></p>
 <h5 id="437-reportsview">4.3.7. Аналитические отчеты (<code>ReportsView</code>)</h5>
-<p>Генерация финансовых отчетов за произвольный период времени. Считает доходность по номерам и общую выручку отеля.</p>
-<p><strong>Фрагмент кода (Агрегация выручки):</strong></p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">totalIncome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">computed</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">filteredBookings</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span>
-<span class="w">        </span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Number</span><span class="p">(</span><span class="nx">b</span><span class="p">.</span><span class="nx">total_cost</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
-<span class="w">        </span><span class="mf">0</span><span class="p">,</span>
-<span class="w">    </span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
+<p>Модуль для работы с данными.</p>
+<ul>
+<li>
+<p><strong>Квартальный отчет:</strong> Интерфейс запрашивает агрегированные данные у бэкенда (<code>/api/analytics/?type=quarterly_report</code>) и отображает финансовые показатели.</p>
+</li>
+<li>
+<p><strong>Инфо-запросы:</strong> Отдельная вкладка для выполнения специфических поисковых запросов (поиск соседей, проверка уборщиков).</p>
+</li>
+</ul>
 <p><img alt="Reports" src="../img-lab-4/reports.png" width="80%" /></p>
+<p><img alt="Info" src="../img-lab-4/info.png" width="80%" /></p>
 <hr />
-<h3 id="5">5. Заключение</h3>
+<h3 id="5">5. Инструкция по установке и запуску</h3>
+<blockquote>
+<p><strong>Важно:</strong> Для корректной работы приложения необходимо, чтобы серверная часть (Django REST Framework из Лабораторной работы №3) была запущена параллельно и доступна по адресу http://127.0.0.1:8000.</p>
+</blockquote>
+<p>Для запуска фронтенд-приложения на локальной машине необходимо выполнить следующие действия. Убедитесь, что у вас установлен Node.js (версии 16 или выше) и пакетный менеджер npm.</p>
+<ol>
+<li>
+<p><strong>Подготовка окружения:</strong></p>
+<p>Перейдите в директорию с исходным кодом клиентской части:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>hotel-frontend
+</code></pre></div>
+</li>
+<li>
+<p><strong>Установка зависимостей:</strong> </p>
+<p>Выполните команду для скачивания и установки всех необходимых библиотек, указанных в package.json (Vue, Vuetify, Axios, Vue Router и др.):</p>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
+</li>
+<li>
+<p><strong>Запуск в режиме разработки:</strong></p>
+<p>Запустите локальный сервер разработки. По умолчанию приложение будет доступно по адресу <code>http://localhost:5173</code>.</p>
+<div class="highlight"><pre><span></span><code>npm run dev
+</code></pre></div>
+</li>
+</ol>
+<h3 id="_1">Заключение</h3>
 <p>В результате выполнения лабораторной работы была успешно реализована клиентская часть информационной системы администратора гостиницы на базе Vue 3 и Vuetify. В приложении настроена надежная система авторизации через токены, реализована сложная бизнес-логика на стороне клиента (включая автоматические расчеты и многоуровневую валидацию данных), а также обеспечено бесшовное взаимодействие с серверным API. Разработанный интерфейс обладает высокой интерактивностью и полностью соответствует предметной области.</p>
 
 
